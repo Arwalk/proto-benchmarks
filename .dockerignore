@@ -1,0 +1,13 @@
+results/
+**/build/
+**/gen/
+**/target/
+**/node_modules/
+**/bin/
+**/obj/
+**/.build/
+**/.zig-cache/
+**/zig-out/
+**/.venv/
+**/__pycache__/
+.git/

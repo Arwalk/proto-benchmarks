@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protobuf benchmarks</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1b1f24; --muted: #6a737d; --line: #e1e4e8; --card: #f6f8fa;
+    --accent: #0b5fff; --good: #1a7f37; --bad: #cf222e; --warn: #9a6700; --base: #fff3c4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1117; --fg: #e6edf3; --muted: #8b949e; --line: #30363d; --card: #161b22;
+      --accent: #58a6ff; --good: #3fb950; --bad: #f85149; --warn: #d29922; --base: #3b2f00;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1117; --fg: #e6edf3; --muted: #8b949e; --line: #30363d; --card: #161b22;
+    --accent: #58a6ff; --good: #3fb950; --bad: #f85149; --warn: #d29922; --base: #3b2f00;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0 16px 48px; background: var(--bg); color: var(--fg);
+         font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 1400px; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 24px 0 4px; }
+  h2 { font-size: 18px; margin: 32px 0 8px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+  h3 { font-size: 15px; margin: 16px 0 6px; }
+  .muted { color: var(--muted); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 16px 0; }
+  .controls label { display: flex; gap: 6px; align-items: center; }
+  select, button { font: inherit; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { position: sticky; top: 0; background: var(--card); }
+  tr.baseline td { background: var(--base); }
+  .tablewrap { overflow-x: auto; }
+  .rel { display: inline-block; min-width: 54px; font-size: 12px; color: var(--muted); }
+  .faster { color: var(--good); } .slower { color: var(--bad); }
+  .na { color: var(--muted); font-style: italic; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px; }
+  .chart { height: 420px; position: relative; }
+  .ok { color: var(--good); } .fail { color: var(--bad); font-weight: 600; } .warn { color: var(--warn); }
+  details { margin: 8px 0; }
+  summary { cursor: pointer; }
+  ul.notes { margin: 4px 0 12px 20px; padding: 0; }
+  code { background: var(--card); padding: 1px 4px; border-radius: 4px; font-size: 12px; }
+  .env { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 4px 24px; }
+  .env div span:first-child { color: var(--muted); display: inline-block; min-width: 110px; }
+  .small { font-size: 12px; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .chart { height: 360px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Protobuf implementation benchmarks</h1>
+  <div class="muted" id="subtitle"></div>
+
+  <section class="card" id="env" style="margin-top:16px"></section>
+
+  <div class="controls">
+    <label>Baseline <select id="baseline"></select></label>
+    <label>Metric <select id="metric">
+      <option value="ops">throughput (ops/s)</option>
+      <option value="ns">latency (ns/op)</option>
+      <option value="mb">bandwidth (MB/s of payload)</option>
+    </select></label>
+    <label><input type="checkbox" id="log" checked> log scale</label>
+    <button id="download">Download summary.json</button>
+  </div>
+
+  <h2>Charts</h2>
+  <p class="muted small">Bars show the median over all timed rounds of all repeats. Tooltips show mean ± stddev, min/max and the number of rounds. Baseline is highlighted.</p>
+  <div id="charts"></div>
+
+  <h2>Tables</h2>
+  <p class="muted small">Cell: median ops/s (or selected metric), then the ratio against the baseline (&gt;1 = faster than baseline). <span class="na">n/a</span> = operation not supported by the library (hover for the reason). <span class="warn">⚠</span> = validation flag not fully satisfied (see Validation). <span class="warn">⏱</span> = the warm-up hit its cap before the throughput stabilised (3 consecutive 0.5 s probes within 5 %), so the runtime may still have been compiling or tiering during the timed rounds. A <span class="fail">red</span> value has a coefficient of variation above 5 % over its rounds: the machine was noisy or the runtime was not steady. Hover a cell for cv, round count and warm-up time.</p>
+  <div id="tables"></div>
+
+  <h2>Validation</h2>
+  <p class="muted small">Self-validation is reported by each harness; cross-validation parses every implementation's dumped output with the reference runtime (official Python protobuf / upb) and compares it with the fixture message, checks that the dumped wire output has the fixture's size, and walks the dumped JSON against the message descriptor to verify it is canonical ProtoJSON (lowerCamelCase keys, 64-bit integers as strings, enum names, base64 bytes, defaults omitted; whitespace is ignored).</p>
+  <div class="tablewrap" id="validation"></div>
+
+  <h2>Implementations and caveats</h2>
+  <div id="notes"></div>
+
+  <h2>Methodology (short)</h2>
+  <div class="card small">
+    <p>Each harness implements the same loop: calibrate a batch to ≥10 ms, warm up for <span id="m-warm"></span>, then run <span id="m-rounds"></span> timed rounds of <span id="m-round"></span> each and report raw (iterations, elapsed) pairs. All implementations decode the same fixture bytes and encode the same decoded message. Warm-up is a minimum of <span id="m-warm2"></span> followed by 0.5 s probes until three consecutive probes agree within 5 % (cap <span id="m-warmmax"></span>). One process at a time, pinned with <code>taskset</code> to the allowed CPU set (or to one core with <code>--core</code>); the whole suite is repeated in rotated order so thermal drift hits every implementation equally. Details: <code>docs/METHODOLOGY.md</code>.</p>
+  </div>
+</main>
+
+<script>/*__CHARTJS__*/</script>
+<script>
+const DATA = /*__DATA__*/;
+(function () {
+  const $ = (s, el) => (el || document).querySelector(s);
+  const fmt = (x, d) => x == null ? "–" : x.toLocaleString(undefined, { maximumFractionDigits: d == null ? 0 : d });
+  const fmtOps = x => x >= 1e6 ? (x / 1e6).toFixed(2) + " M" : x >= 1e3 ? (x / 1e3).toFixed(1) + " k" : x.toFixed(x >= 100 ? 0 : 1);
+  const fmtNs = x => x >= 1e6 ? (x / 1e6).toFixed(2) + " ms" : x >= 1e3 ? (x / 1e3).toFixed(1) + " µs" : x.toFixed(0) + " ns";
+  const fmtMb = x => x.toFixed(x >= 100 ? 0 : 1);
+  const impls = DATA.implementations;
+  const byId = Object.fromEntries(impls.map(i => [i.id, i]));
+  let baseline = DATA.baseline || (impls[0] && impls[0].id);
+  let metric = "ops";
+  let logScale = true;
+  const charts = [];
+
+  $("#subtitle").textContent = `generated ${DATA.generated_at} · ${impls.length} implementations · ${DATA.source_files.length} result files`;
+  const run = DATA.run || {};
+  $("#m-warm").textContent = (run.warmup_seconds ?? "?") + " s";
+  $("#m-rounds").textContent = run.rounds ?? "?";
+  $("#m-round").textContent = (run.round_seconds ?? "?") + " s";
+  $("#m-warm2").textContent = (run.warmup_seconds ?? "?") + " s";
+  $("#m-warmmax").textContent = run.warmup_max_seconds != null ? run.warmup_max_seconds + " s" : "none: fixed warm-up";
+
+  // ---- environment
+  const env = DATA.environment || {};
+  const envRows = [["CPU", env.cpu_model], ["cores", env.cpu_count], ["governor", env.cpu_governor], ["SMT", env.smt_active],
+    ["kernel", env.kernel], ["OS", env.os], ["docker", env.in_docker], ["image", env.image],
+    ["cpu pinning", run.core != null ? "core " + run.core : run.cpuset ? "cpuset " + run.cpuset : "none"]];
+  const tc = env.toolchains || {};
+  $("#env").innerHTML = "<h3 style='margin-top:0'>Environment</h3><div class='env'>" +
+    envRows.filter(r => r[1] != null && r[1] !== "").map(r => `<div><span>${r[0]}</span>${esc(String(r[1]))}</div>`).join("") +
+    "</div><details><summary class='small'>toolchains</summary><div class='env small'>" +
+    Object.entries(tc).map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join("") + "</div></details>";
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+  function cell(impl, ds, op) { return impl.cells[ds + ":" + op]; }
+  function value(c) {
+    if (!c || !c.supported) return null;
+    return metric === "ops" ? c.ops_per_sec.median : metric === "ns" ? c.ns_per_op : c.mb_per_sec;
+  }
+  function label(x) { return metric === "ops" ? fmtOps(x) : metric === "ns" ? fmtNs(x) : fmtMb(x) + " MB/s"; }
+  function warmupText(c) {
+    if (c.warmup_ns_max == null) return "warm-up: fixed (no steady-state data)";
+    return `warm-up ${(c.warmup_ns_max / 1e9).toFixed(1)} s, ${c.steady === false ? "NOT steady (cap hit)" : "steady"}`;
+  }
+  function validationOk(c) {
+    const v = c && c.validation; if (!v) return true;
+    if (v.wire_size_match === false) return false;
+    if (c.operation.startsWith("json") && v.json_roundtrip_ok === false) return false;
+    return true;
+  }
+
+  // ---- controls
+  const sel = $("#baseline");
+  impls.forEach(i => { const o = document.createElement("option"); o.value = i.id; o.textContent = i.id; sel.appendChild(o); });
+  sel.value = baseline;
+  sel.onchange = () => { baseline = sel.value; renderAll(); };
+  $("#metric").onchange = e => { metric = e.target.value; renderAll(); };
+  $("#log").onchange = e => { logScale = e.target.checked; renderAll(); };
+  $("#download").onclick = () => {
+    const blob = new Blob([JSON.stringify(DATA, null, 1)], { type: "application/json" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "summary.json"; a.click();
+  };
+
+  // ---- charts
+  const palette = ["#0b5fff", "#1a7f37", "#cf222e", "#9a6700", "#8250df", "#bf3989", "#0969da", "#2da44e", "#e16f24", "#6e7781"];
+  const langColor = {}; let pi = 0;
+  const colorFor = i => { if (!langColor[i.language]) langColor[i.language] = palette[pi++ % palette.length]; return langColor[i.language]; };
+
+  function renderCharts() {
+    charts.splice(0).forEach(c => c.destroy());
+    const host = $("#charts"); host.innerHTML = "";
+    const isDark = typeof matchMedia === "function" && matchMedia("(prefers-color-scheme: dark)").matches;
+    Chart.defaults.color = isDark ? "#e6edf3" : "#1b1f24";
+    Chart.defaults.borderColor = isDark ? "#30363d" : "#e1e4e8";
+    for (const op of DATA.operations) {
+      const h = document.createElement("h3"); h.textContent = op.replace("_", " "); host.appendChild(h);
+      const grid = document.createElement("div"); grid.className = "grid"; host.appendChild(grid);
+      for (const ds of DATA.datasets) {
+        const rows = impls.map(i => ({ i, c: cell(i, ds, op) })).filter(r => value(r.c) != null);
+        const better = metric === "ns" ? (a, b) => value(a.c) - value(b.c) : (a, b) => value(b.c) - value(a.c);
+        rows.sort(better);
+        const card = document.createElement("div"); card.className = "card";
+        const title = document.createElement("div"); title.className = "small muted";
+        const pb = rows[0] && rows[0].c.payload_bytes;
+        title.textContent = `${ds} (${pb != null ? fmt(pb) + " B" : ""})`;
+        card.appendChild(title);
+        const wrap = document.createElement("div"); wrap.className = "chart"; wrap.style.height = (60 + rows.length * 22) + "px";
+        const canvas = document.createElement("canvas"); wrap.appendChild(canvas); card.appendChild(wrap); grid.appendChild(card);
+        if (!rows.length) { wrap.innerHTML = "<p class='na'>no data</p>"; continue; }
+        charts.push(new Chart(canvas, {
+          type: "bar",
+          data: {
+            labels: rows.map(r => r.i.id),
+            datasets: [{
+              data: rows.map(r => value(r.c)),
+              backgroundColor: rows.map(r => r.i.id === baseline ? "#f2b705" : colorFor(r.i)),
+              borderWidth: 0, barPercentage: 0.8, categoryPercentage: 0.9,
+            }],
+          },
+          options: {
+            indexAxis: "y", responsive: true, maintainAspectRatio: false, animation: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: { callbacks: { label: ctx => {
+                const c = rows[ctx.dataIndex].c, s = c.ops_per_sec;
+                return [`${label(value(c))}`, `ops/s: median ${fmtOps(s.median)}, mean ${fmtOps(s.mean)} ± ${fmtOps(s.stddev)} (cv ${(s.cv * 100).toFixed(1)}%)`,
+                        `min ${fmtOps(s.min)}, max ${fmtOps(s.max)}, rounds ${s.n}`, `ns/op ${fmtNs(c.ns_per_op)}, ${fmtMb(c.mb_per_sec)} MB/s`,
+                        warmupText(c)];
+              } } },
+            },
+            scales: {
+              x: { type: logScale ? "logarithmic" : "linear", title: { display: true, text: metric === "ops" ? "ops/s" : metric === "ns" ? "ns/op" : "MB/s" }, grid: { display: true } },
+              y: { ticks: { autoSkip: false, font: { size: 11 } } },
+            },
+          },
+        }));
+      }
+    }
+  }
+
+  // ---- tables
+  function renderTables() {
+    const host = $("#tables"); host.innerHTML = "";
+    const base = byId[baseline];
+    for (const ds of DATA.datasets) {
+      const h = document.createElement("h3");
+      const anyCell = impls.map(i => cell(i, ds, "wire_decode")).find(c => c && c.payload_bytes != null);
+      h.textContent = `${ds} dataset` + (anyCell ? ` — ${fmt(anyCell.payload_bytes)} wire bytes` : "");
+      host.appendChild(h);
+      const wrap = document.createElement("div"); wrap.className = "tablewrap";
+      let html = "<table><thead><tr><th>implementation</th><th>version</th>" + DATA.operations.map(o => `<th>${o.replace("_", " ")}</th>`).join("") + "</tr></thead><tbody>";
+      const order = impls.slice().sort((a, b) => {
+        const va = value(cell(a, ds, "wire_decode")), vb = value(cell(b, ds, "wire_decode"));
+        if (va == null && vb == null) return a.id.localeCompare(b.id);
+        if (va == null) return 1; if (vb == null) return -1;
+        return metric === "ns" ? va - vb : vb - va;
+      });
+      for (const i of order) {
+        html += `<tr class="${i.id === baseline ? "baseline" : ""}"><td><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.id)}</a></td><td class="small muted">${esc(i.version)}</td>`;
+        for (const op of DATA.operations) {
+          const c = cell(i, ds, op), v = value(c);
+          if (v == null) { html += `<td class="na" title="${esc((c && c.reason) || "no data")}">n/a</td>`; continue; }
+          const bc = base && cell(base, ds, op), bv = value(bc);
+          let rel = "";
+          if (bv != null && i.id !== baseline) {
+            const ratio = metric === "ns" ? bv / v : v / bv;
+            rel = `<span class="rel ${ratio >= 1 ? "faster" : "slower"}">${ratio >= 10 ? ratio.toFixed(0) : ratio.toFixed(2)}×</span>`;
+          } else if (i.id === baseline) rel = `<span class="rel">baseline</span>`;
+          const warn = validationOk(c) ? "" : ` <span class="warn" title="validation flag failed">⚠</span>`;
+          const unsteady = c.steady === false ? ` <span class="warn" title="warm-up hit the cap before 3 consecutive 0.5 s probes agreed within 5%: the runtime may still have been compiling/tiering">⏱</span>` : "";
+          const cv = c.ops_per_sec.cv;
+          const val = cv > 0.05 ? `<span class="fail" title="cv above 5%">${label(v)}</span>` : label(v);
+          html += `<td title="cv ${(cv * 100).toFixed(1)}% over ${c.ops_per_sec.n} rounds; ${warmupText(c)}">${val}${warn}${unsteady} ${rel}</td>`;
+        }
+        html += "</tr>";
+      }
+      wrap.innerHTML = html + "</tbody></table>"; host.appendChild(wrap);
+    }
+  }
+
+  // ---- validation
+  function renderValidation() {
+    const cross = DATA.cross_validation || {};
+    let html = "<table><thead><tr><th>implementation</th><th>dataset</th><th>wire bytes identical</th><th>wire size match</th><th>json round-trip</th><th>json bytes</th><th>cross: wire equal</th><th>cross: wire size</th><th>cross: json equal</th><th>cross: json canonical</th></tr></thead><tbody>";
+    const flag = v => v === true ? "<span class='ok'>ok</span>" : v === false ? "<span class='fail'>FAIL</span>" : "<span class='na'>–</span>";
+    for (const i of impls) {
+      for (const ds of DATA.datasets) {
+        const c = cell(i, ds, "wire_decode") || cell(i, ds, "wire_encode"); const v = (c && c.validation) || {};
+        const key = i.id.replace(/\//g, "-");
+        const x = (cross[key] || cross[i.id] || {})[ds] || {};
+        const problems = (x.json_canonical_problems || []).join("\n");
+        html += `<tr><td>${esc(i.id)}</td><td>${ds}</td><td>${flag(v.wire_bytes_match)}</td><td>${flag(v.wire_size_match)}</td><td>${flag(v.json_roundtrip_ok)}</td><td>${v.json_bytes != null ? fmt(v.json_bytes) : "–"}</td><td>${flag(x.wire_equal)}${x.wire_error ? ` <span class="small muted">${esc(x.wire_error)}</span>` : ""}</td><td>${flag(x.wire_size_match)}</td><td>${flag(x.json_equal)}${x.json_error ? ` <span class="small muted">${esc(x.json_error)}</span>` : ""}</td><td title="${esc(problems)}">${flag(x.json_canonical)}${x.json_canonical === false ? ` <span class="small muted">${esc((x.json_canonical_problems || [])[0] || "")}</span>` : ""}</td></tr>`;
+      }
+    }
+    $("#validation").innerHTML = html + "</tbody></table>";
+  }
+
+  // ---- notes
+  function renderNotes() {
+    $("#notes").innerHTML = impls.map(i => `<details ${i.id === baseline ? "open" : ""}><summary><b>${esc(i.id)}</b> <span class="muted small">${esc(i.version)} · ${esc(i.runtime || "")} · ${i.repeats} repeat(s) · <a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.url)}</a></span></summary>` +
+      (i.notes && i.notes.length ? `<ul class="notes">${i.notes.map(n => `<li>${esc(n)}</li>`).join("")}</ul>` : "<p class='muted small'>no notes</p>") + "</details>").join("");
+  }
+
+  function renderAll() { renderCharts(); renderTables(); renderValidation(); renderNotes(); }
+  renderAll();
+})();
+</script>
+</body>
+</html>

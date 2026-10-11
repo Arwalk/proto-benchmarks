@@ -1,0 +1,95 @@
+// Shared benchmark schema. Every implementation compiles this exact file.
+//
+// Deliberately restricted to features that every benchmarked library supports:
+// proto3 only, no well-known types, no extensions, no groups, no `optional`.
+syntax = "proto3";
+
+package bench;
+
+option java_package = "io.protobench.bench";
+option java_multiple_files = true;
+option csharp_namespace = "ProtoBench.Bench";
+option go_package = "protobench/gen/bench;bench";
+option optimize_for = SPEED;
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  ACTIVE = 1;
+  INACTIVE = 2;
+  PENDING = 3;
+}
+
+// ~60 bytes on the wire. Flat scalars only: the "RPC request" shape.
+message SmallMessage {
+  int32 id = 1;
+  int64 timestamp = 2;
+  uint32 flags = 3;
+  double value = 4;
+  bool enabled = 5;
+  string name = 6;
+  Status status = 7;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+  uint32 zip = 4;
+}
+
+message Item {
+  uint64 sku = 1;
+  string description = 2;
+  int32 quantity = 3;
+  double unit_price = 4;
+  repeated string tags = 5;
+  Status status = 6;
+}
+
+// ~8 KB on the wire. Nested messages, repeated submessages, map, oneof,
+// enum, bytes: the "business document" shape.
+message MediumMessage {
+  string order_id = 1;
+  int64 created_at = 2;
+  Address shipping = 3;
+  Address billing = 4;
+  repeated Item items = 5;
+  map<string, int64> attributes = 6;
+  oneof payment {
+    string card_token = 7;
+    string bank_account = 8;
+    uint64 voucher_id = 9;
+  }
+  Status status = 10;
+  bytes signature = 11;
+  repeated string notes = 12;
+  double total = 13;
+  sint32 priority = 14;
+  fixed64 checksum = 15;
+}
+
+message Sample {
+  int64 timestamp = 1;
+  double value = 2;
+  string label = 3;
+  Status status = 4;
+}
+
+message Vertex {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+// ~1 MB on the wire. Packed numeric arrays, many small submessages, a map
+// with integer keys and a binary blob: the "telemetry batch / mesh" shape.
+message LargeMessage {
+  string source = 1;
+  repeated double measurements = 2;
+  repeated int32 counters = 3;
+  repeated sint64 deltas = 4;
+  repeated Sample samples = 5;
+  repeated Vertex vertices = 6;
+  map<int32, string> labels = 7;
+  bytes blob = 8;
+}

@@ -1,0 +1,7 @@
+<Project>
+  <!-- Must be set before the SDK is imported, hence Directory.Build.props. -->
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>build/obj/</BaseIntermediateOutputPath>
+    <BaseOutputPath>build/bin/</BaseOutputPath>
+  </PropertyGroup>
+</Project>

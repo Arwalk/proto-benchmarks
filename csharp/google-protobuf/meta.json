@@ -1,0 +1,13 @@
+{
+  "language": "csharp",
+  "name": "google-protobuf",
+  "variant": null,
+  "url": "https://github.com/protocolbuffers/protobuf/tree/main/csharp",
+  "version": "auto",
+  "notes": [
+    "Official Google.Protobuf runtime (NuGet) with protoc --csharp_out generated code.",
+    "wire_decode = SmallMessage.Parser.ParseFrom(byte[]); wire_encode = msg.ToByteArray().",
+    "json_encode = JsonFormatter.Default.Format(msg); json_decode = JsonParser.Default.Parse<T>(string). The output is canonical ProtoJSON but not compact: JsonFormatter.Default emits a space after ':' and ',', so json_encode writes about 10% more bytes than the compact fixture (141/9035/1979535 vs 126/8283/1750634 for small/medium/large). JsonFormatter/JsonParser are reflection-based (descriptor + IFieldAccessor); Google.Protobuf offers no generated JSON code.",
+    "Built with dotnet build -c Release, workstation (non-server) GC, default TieredPGO, InvariantGlobalization. TargetFramework net8.0 with RollForward=Major so a newer runtime can execute it."
+  ]
+}

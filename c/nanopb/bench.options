@@ -1,0 +1,38 @@
+# nanopb generator options for bench.proto (dynamic allocation mode).
+#
+# Every string, bytes and repeated field (including the repeated map-entry
+# fields that nanopb uses to represent map<K,V>) is FT_POINTER so the decoder
+# malloc()s exactly what the message needs, like the other benchmarked libraries,
+# and no array size is hard-coded. Requires PB_ENABLE_MALLOC at compile time.
+# Singular scalars and singular sub-messages stay statically embedded (the
+# default), which is nanopb's idiomatic layout.
+
+bench.SmallMessage.name                  type:FT_POINTER
+
+bench.Address.street                     type:FT_POINTER
+bench.Address.city                       type:FT_POINTER
+bench.Address.country                    type:FT_POINTER
+
+bench.Item.description                   type:FT_POINTER
+bench.Item.tags                          type:FT_POINTER
+
+bench.MediumMessage.order_id             type:FT_POINTER
+bench.MediumMessage.items                type:FT_POINTER
+bench.MediumMessage.attributes           type:FT_POINTER
+bench.MediumMessage.AttributesEntry.key  type:FT_POINTER
+bench.MediumMessage.card_token           type:FT_POINTER
+bench.MediumMessage.bank_account         type:FT_POINTER
+bench.MediumMessage.signature            type:FT_POINTER
+bench.MediumMessage.notes                type:FT_POINTER
+
+bench.Sample.label                       type:FT_POINTER
+
+bench.LargeMessage.source                type:FT_POINTER
+bench.LargeMessage.measurements          type:FT_POINTER
+bench.LargeMessage.counters              type:FT_POINTER
+bench.LargeMessage.deltas                type:FT_POINTER
+bench.LargeMessage.samples               type:FT_POINTER
+bench.LargeMessage.vertices              type:FT_POINTER
+bench.LargeMessage.labels                type:FT_POINTER
+bench.LargeMessage.LabelsEntry.value     type:FT_POINTER
+bench.LargeMessage.blob                  type:FT_POINTER

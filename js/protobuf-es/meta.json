@@ -1,0 +1,16 @@
+{
+  "language": "javascript",
+  "name": "protobuf-es",
+  "variant": null,
+  "url": "https://github.com/bufbuild/protobuf-es",
+  "version": "auto",
+  "notes": [
+    "@bufbuild/protobuf v2 runtime with protoc-gen-es generated schemas (target=js+dts). Message objects are plain objects created from the generated schema descriptors (the library's only API; there is no alternative static codegen).",
+    "wire_decode = fromBinary(TSchema, bytes); wire_encode = toBinary(TSchema, msg); json_encode = toJsonString(TSchema, msg); json_decode = fromJsonString(TSchema, text). All with default options.",
+    "fromBinary bytes fields are zero-copy: decoding returns subarray views of the input buffer (the 64 KiB blob of large is not copied), whereas most other runtimes copy bytes fields into a new buffer.",
+    "64-bit integers are bigint; the black hole folds the low 32 bits of created_at.",
+    "Map entries are emitted in JavaScript object-key order (integer-like keys ascending), so wire_bytes_match can be false for the datasets with maps while wire_size_match holds.",
+    "@bufbuild/protoc-gen-es is pinned to the same version as the runtime in package.json / package-lock.json.",
+    "float (32-bit) fields are serialised by JSON.stringify as the exact double value of the float32 (e.g. 575.22 -> 575.219970703125), as both JavaScript libraries do; the values round-trip exactly but json_bytes for the large dataset is ~18% larger than the shortest-repr output of the Go/Python harnesses."
+  ]
+}

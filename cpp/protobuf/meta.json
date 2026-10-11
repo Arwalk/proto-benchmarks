@@ -1,0 +1,14 @@
+{
+  "language": "cpp",
+  "name": "protobuf",
+  "variant": null,
+  "url": "https://github.com/protocolbuffers/protobuf",
+  "version": "auto",
+  "notes": [
+    "Google's reference C++ runtime (full libprotobuf, not lite, because the JSON util needs descriptors/reflection) linked against the installed 36.2 libraries via find_package(protobuf CONFIG); generated code from protoc --cpp_out with optimize_for = SPEED.",
+    "No arenas: wire_decode and json_decode construct a fresh message on the stack per iteration and destroy it at the end of the iteration; wire_encode and json_encode produce a fresh std::string per iteration.",
+    "JSON via google/protobuf/util/json_util.h (MessageToJsonString / JsonStringToMessage) with default options, i.e. canonical ProtoJSON. json_util is reflection-driven (it walks descriptors), not generated code; libprotobuf offers no generated JSON path.",
+    "Map fields serialise in the runtime's hash-map iteration order, so re-encoded medium/large output is not byte-identical to the fixture (wire_bytes_match=false, wire_size_match=true); the JSON round-trip check therefore compares sizes for those datasets.",
+    "library_version is google::protobuf::internal::VersionString(GOOGLE_PROTOBUF_VERSION) of the linked runtime; build/version.txt is the CMake package version."
+  ]
+}

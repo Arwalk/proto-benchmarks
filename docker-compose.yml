@@ -1,0 +1,10 @@
+services:
+  bench:
+    build: .
+    image: proto-benchmarks
+    # CPU set for the benchmark processes: run.sh pins every harness to this whole set (GC/JIT
+    # helper threads stay inside it); add `--core N` to the command to force a single core.
+    cpuset: "0-2"
+    volumes:
+      - ./results:/bench/results
+    # Pass run.sh options through `docker compose run bench --quick` etc.

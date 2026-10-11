@@ -1,0 +1,14 @@
+{
+  "language": "java",
+  "name": "protobuf-java",
+  "variant": null,
+  "url": "https://github.com/protocolbuffers/protobuf/tree/main/java",
+  "version": "auto",
+  "notes": [
+    "Official Java runtime (com.google.protobuf:protobuf-java) with protoc-generated code (optimize_for = SPEED, java_multiple_files).",
+    "wire_decode = SmallMessage.parseFrom(byte[]); wire_encode = msg.toByteArray(). A new message / byte[] is allocated per iteration. wire_encode calls toByteArray() on the shared immutable fixture message, so protobuf-java's memoizedSize makes the size pass run once; other libraries recompute the size every call. This is the idiomatic path (a real user re-serialising the same message object gets the same benefit) and is left as is.",
+    "JSON via protobuf-java-util JsonFormat: printer().omittingInsignificantWhitespace().print(msg) and parser().merge(text, builder).build(). The Printer and Parser instances are created once and reused (they are immutable and thread-safe; this is the documented usage). JsonFormat is descriptor-driven (reflective) because protobuf-java offers no generated JSON code path.",
+    "Default HotSpot JIT flags (no -XX tuning). Timer: System.nanoTime(). Black hole: static volatile long xor-folded every iteration.",
+    "Build: Maven, release 21; runtime jars are resolved by Maven and listed in build/classpath.txt."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "language": "javascript",
+  "name": "protobufjs",
+  "variant": null,
+  "url": "https://github.com/protobufjs/protobuf.js",
+  "version": "auto",
+  "notes": [
+    "protobuf.js 8.x with pbjs static-module codegen (-t static-module -w esm, protobufjs/minimal runtime): wire_decode = T.decode(buf); wire_encode = T.encode(msg).finish(). No reflection on the wire path.",
+    "JSON ops use the official optional ProtoJSON extension protobufjs/ext/protojson (toJsonString / fromJsonString), which is the library's only spec-compliant ProtoJSON implementation (int64 as strings, enums as names, lowerCamelCase, defaults omitted, conformance-tested). It is reflection-driven by design: pbjs has no static-module codegen for ProtoJSON, so the reflected types are loaded once at start-up from a JSON descriptor (pbjs -t json) and the static message objects are passed to it. json_decode therefore yields reflected message instances (same shape/fields as the static ones).",
+    "T.decode bytes fields are zero-copy: returns subarray views of the input buffer (the 64 KiB blob of large is not copied), whereas most other runtimes copy bytes fields into a new buffer.",
+    "64-bit integers are Long objects (the `long` package is a dependency of protobufjs 8); the black hole folds the low 32 bits of created_at.",
+    "Map entries are emitted in JavaScript object-key order (integer-like keys ascending), so wire_bytes_match can be false for the datasets with maps while wire_size_match holds.",
+    "pbjs was run with --no-verify --no-delimited --no-typeurl only to trim unused generated helpers; the encode/decode code is unchanged.",
+    "float (32-bit) fields are serialised by JSON.stringify as the exact double value of the float32 (e.g. 575.22 -> 575.219970703125), as both JavaScript libraries do; the values round-trip exactly but json_bytes for the large dataset is ~18% larger than the shortest-repr output of the Go/Python harnesses."
+  ]
+}

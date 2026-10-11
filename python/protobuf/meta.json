@@ -1,0 +1,13 @@
+{
+  "language": "python",
+  "name": "protobuf",
+  "variant": null,
+  "url": "https://github.com/protocolbuffers/protobuf/tree/main/python",
+  "version": "auto",
+  "notes": [
+    "Official runtime with the upb C backend (PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=upb).",
+    "JSON via google.protobuf.json_format (MessageToJson(msg, indent=None) / Parse). json_format is pure Python walking descriptors plus json.dumps/json.loads, all inside the timed region; there is no generated JSON code.",
+    "MessageToJson emits ': ' and ', ' separators, so json_bytes is 139/8865/1950193 for small/medium/large against the compact fixture's 126/8283/1750634; the content is canonical ProtoJSON.",
+    "Map iteration order follows the upb map, so wire_bytes_match is false for medium/large while wire_size_match holds and the messages are equal."
+  ]
+}

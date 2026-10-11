@@ -1,0 +1,16 @@
+{
+  "language": "java",
+  "name": "wire",
+  "variant": null,
+  "url": "https://github.com/square/wire",
+  "version": "auto",
+  "notes": [
+    "Square Wire with Java code generation (wire-compiler --java_out; the wire-maven-plugin only exists for Wire 3.x, so build.sh fetches the pinned wire-compiler jar-with-dependencies from Maven Central and runs it). Runtime: com.squareup.wire:wire-runtime-jvm (Kotlin runtime, Java generated classes).",
+    "Generated classes are immutable with public final fields and a Builder; repeated fields are java.util.List, maps are java.util.Map, bytes are okio.ByteString; proto3 singular scalars are primitives (OMIT_IDENTITY).",
+    "wire_decode = SmallMessage.ADAPTER.decode(byte[]); wire_encode = SmallMessage.ADAPTER.encode(msg) (returns a new byte[]). A new message / byte[] is allocated per iteration. ADAPTER.encode(msg) writes into an okio Buffer and copies it out with readByteArray(); ADAPTER.decode(byte[]) wraps the input in a Buffer first, so each wire op pays one extra copy of the payload compared with libraries that write straight into a byte[].",
+    "JSON via wire-moshi-adapter: Moshi.Builder().add(new WireJsonAdapterFactory()).build() and moshi.adapter(SmallMessage.class) created once and reused; json_encode = adapter.toJson(msg), json_decode = adapter.fromJson(text). Output verified to be the canonical proto3 JSON mapping (lowerCamelCase keys, 64-bit ints as strings, enums as names, bytes as base64, defaults omitted) and semantically identical to the fixture JSON for all three datasets.",
+    "wire_bytes_match is false for the medium dataset only because Wire emits oneof members after all other fields (card_token, tag 7, is written after fixed64 checksum, tag 15); the output has identical length and content, just a different field order, and the JSON round-trip check passes on length.",
+    "Default HotSpot JIT flags (no -XX tuning). Timer: System.nanoTime(). Black hole: static volatile long xor-folded every iteration.",
+    "Build: Maven, release 21; runtime jars are resolved by Maven and listed in build/classpath.txt. The library version is read from pom.xml into build/version.txt and passed to the harness as a system property (Wire has no runtime version API)."
+  ]
+}

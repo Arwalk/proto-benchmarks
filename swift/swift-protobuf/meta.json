@@ -1,0 +1,17 @@
+{
+  "language": "swift",
+  "name": "swift-protobuf",
+  "variant": null,
+  "url": "https://github.com/apple/swift-protobuf",
+  "version": "auto",
+  "notes": [
+    "apple/swift-protobuf with protoc-gen-swift generated structs (Visibility=Internal); built with swift build -c release (SwiftPM default release settings, no -Ounchecked / cross-module optimisation flags beyond the default).",
+    "Wire: Message(serializedBytes: [UInt8]) / serializedBytes() -> [UInt8] (the generic ContiguousBytes API; the fixture is read once into a [UInt8]). A new message value / byte array is created and dropped per iteration (ARC release is part of the iteration).",
+    "JSON: jsonString() / Message(jsonString:) with default options (canonical ProtoJSON: lowerCamelCase, 64-bit ints as strings, enums as names, bytes as base64, defaults omitted).",
+    "Timer: clock_gettime(CLOCK_MONOTONIC) via Glibc.",
+    "Map iteration order of Swift Dictionary is unspecified, so wire_bytes_match may be false for datasets with maps (medium, large); sizes still match.",
+    "build.sh builds the protoc-gen-swift plugin from the same pinned package (harness/Package.resolved) and generates into harness/Sources/bench/gen; SwiftPM scratch dir is build/spm.",
+    "The SwiftPM package lives in harness/ rather than in this directory: SwiftPM derives the root package identity from the directory name, and 'swift-protobuf' collides with the dependency's identity (SwiftPM silently drops the dependency at resolve time and reports a cyclic dependency at build time).",
+    "harness.runtime / library_version are passed to the binary by run.sh from build/runtime.txt (swift --version) and build/version.txt (Package.resolved pin)."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "go",
+  "name": "protobuf-go",
+  "variant": null,
+  "url": "https://github.com/protocolbuffers/protobuf-go",
+  "version": "auto",
+  "notes": [
+    "Official google.golang.org/protobuf runtime with protoc-gen-go generated code (same version as the runtime, installed by build.sh into build/bin).",
+    "wire_decode = proto.Unmarshal(b, &bench.T{}); wire_encode = proto.Marshal(m) with default MarshalOptions (not Deterministic).",
+    "json_encode = protojson.Marshal(m) (default options: compact canonical ProtoJSON); json_decode = protojson.Unmarshal(jsonBytes, &bench.T{}) with the fixture JSON read once as []byte. protojson is reflection-based (protoreflect); protobuf-go offers no generated JSON code.",
+    "protojson deliberately injects a per-binary random choice of whitespace after ',' and ':' (internal/detrand), so json_bytes can be slightly larger than a strictly compact encoding and the byte-exact output differs between builds.",
+    "Map iteration order in Go is randomised, so wire_bytes_match is expected to be false for medium/large (wire_size_match is what is checked).",
+    "Built with plain `go build` (default optimisation, no -race, no PGO)."
+  ]
+}

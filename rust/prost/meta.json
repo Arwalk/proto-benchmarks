@@ -1,0 +1,14 @@
+{
+  "language": "rust",
+  "name": "prost",
+  "variant": null,
+  "url": "https://github.com/tokio-rs/prost",
+  "version": "auto",
+  "notes": [
+    "prost with prost-build generated structs (default settings: HashMap maps, Vec<u8> bytes, String strings).",
+    "Wire: Message::decode(&[u8]) / Message::encode_to_vec() allocate a new message / Vec per iteration.",
+    "prost has no JSON support itself; JSON uses pbjson + pbjson-build generated serde impls (canonical ProtoJSON: lowerCamelCase, 64-bit ints as strings, enums as names, bytes as base64, defaults omitted) driven by serde_json::to_string / serde_json::from_str.",
+    "Map iteration order of HashMap is unspecified, so wire_bytes_match may be false for datasets with maps (medium, large); sizes still match.",
+    "Build: cargo build --release --locked with the default release profile (no LTO / PGO / target-cpu)."
+  ]
+}

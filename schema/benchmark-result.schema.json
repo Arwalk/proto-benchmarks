@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/proto-benchmarks/schema/benchmark-result.schema.json",
+  "title": "proto-benchmarks result",
+  "type": "object",
+  "required": ["schema_version", "harness", "results"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "harness": {
+      "type": "object",
+      "required": ["language", "name"],
+      "properties": {
+        "language": { "type": "string" },
+        "name": { "type": "string" },
+        "runtime": { "type": "string" },
+        "library_version": { "type": "string" }
+      }
+    },
+    "implementation": {
+      "description": "Added by the runner from meta.json",
+      "type": "object",
+      "required": ["language", "name", "version", "url"],
+      "properties": {
+        "id": { "type": "string", "description": "directory of the implementation, e.g. rust/prost" },
+        "language": { "type": "string" },
+        "name": { "type": "string" },
+        "variant": { "type": ["string", "null"] },
+        "version": { "type": "string" },
+        "url": { "type": "string" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "environment": { "type": "object", "description": "Added by the runner from tools/env_info.sh" },
+    "run": {
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string" },
+        "repeat_index": { "type": "integer" },
+        "core": { "type": ["integer", "string", "null"], "description": "single pinned core, null when pinned to a set or unpinned" },
+        "cpuset": { "type": ["string", "null"], "description": "taskset cpu list the harness was pinned to, e.g. 0-2" },
+        "warmup_seconds": { "type": "number", "description": "minimum warm-up" },
+        "warmup_max_seconds": { "type": "number", "description": "warm-up cap of the steady-state detection" },
+        "steady_probe_seconds": { "type": "number" },
+        "steady_window": { "type": "integer" },
+        "steady_tolerance": { "type": "number" },
+        "round_seconds": { "type": "number" },
+        "rounds": { "type": "integer" }
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dataset", "operation", "supported"],
+        "properties": {
+          "dataset": { "enum": ["small", "medium", "large"] },
+          "operation": { "enum": ["wire_encode", "wire_decode", "json_encode", "json_decode"] },
+          "supported": { "type": "boolean" },
+          "reason": { "type": "string" },
+          "payload_bytes": { "type": "integer", "minimum": 0 },
+          "warmup_ns": { "type": "integer", "minimum": 0, "description": "actual warm-up spent on this cell (minimum + steady-state probes)" },
+          "steady": { "type": "boolean", "description": "false when the warm-up cap was hit before 3 consecutive probes agreed within 5 %" },
+          "batch": { "type": "integer", "minimum": 1 },
+          "validation": {
+            "type": "object",
+            "properties": {
+              "wire_bytes_match": { "type": "boolean" },
+              "wire_size_match": { "type": "boolean" },
+              "json_roundtrip_ok": { "type": ["boolean", "null"] },
+              "json_bytes": { "type": ["integer", "null"] }
+            }
+          },
+          "rounds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["iterations", "elapsed_ns"],
+              "properties": {
+                "iterations": { "type": "integer", "minimum": 1 },
+                "elapsed_ns": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        },
+        "if": { "properties": { "supported": { "const": true } } },
+        "then": { "required": ["payload_bytes", "rounds"] }
+      }
+    }
+  }
+}

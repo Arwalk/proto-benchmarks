@@ -1,0 +1,13 @@
+{
+  "name": "protobench-protobufjs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "proto-benchmarks harness for protobuf.js",
+  "dependencies": {
+    "protobufjs": "8.8.0"
+  },
+  "devDependencies": {
+    "protobufjs-cli": "2.7.0"
+  }
+}

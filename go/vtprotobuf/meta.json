@@ -1,0 +1,15 @@
+{
+  "language": "go",
+  "name": "vtprotobuf",
+  "variant": null,
+  "url": "https://github.com/planetscale/vtprotobuf",
+  "version": "auto",
+  "notes": [
+    "planetscale/vtprotobuf generated fast paths (protoc-gen-go-vtproto features=marshal+unmarshal+size) on top of protoc-gen-go message types from google.golang.org/protobuf.",
+    "wire_decode = (&bench.T{}).UnmarshalVT(b); wire_encode = m.MarshalVT(). No pooling (features=pool) and no unsafe features are enabled.",
+    "JSON ops use protojson from google.golang.org/protobuf (shared with protobuf-go): vtprotobuf has no JSON support of its own, so the json_encode/json_decode columns measure protojson (reflection-based) and are expected to equal protobuf-go's; they are shown for completeness. json_encode = protojson.Marshal(m); json_decode = protojson.Unmarshal(jsonBytes, &bench.T{}).",
+    "protojson deliberately injects a per-binary random choice of whitespace after ',' and ':' (internal/detrand), so json_bytes can be slightly larger than a strictly compact encoding.",
+    "Map iteration order in Go is randomised, so wire_bytes_match is expected to be false for medium/large (wire_size_match is what is checked).",
+    "Reported version is the vtprotobuf module version; the underlying google.golang.org/protobuf version is pinned in go.mod."
+  ]
+}

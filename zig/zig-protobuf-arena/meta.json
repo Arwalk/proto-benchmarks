@@ -1,0 +1,14 @@
+{
+  "language": "zig",
+  "name": "zig-protobuf",
+  "variant": "arena",
+  "url": "https://github.com/Arwalk/zig-protobuf",
+  "version": "auto",
+  "notes": [
+    "Allocation-strategy variant of zig/zig-protobuf: same library, generated code, harness and build flags (ReleaseFast, -Dcpu=baseline, no libc); only the allocator handed to the library differs.",
+    "Allocator: std.heap.ArenaAllocator backed by std.heap.page_allocator, created once per dataset. Every iteration allocates its message / buffer from the arena and ends with arena.reset(.retain_capacity): nothing is freed individually (no msg.deinit, no Allocating.deinit, no free) and the arena keeps its memory, so after the first iterations no call reaches the OS.",
+    "This deliberately breaks the suite-wide 'fresh allocation, individual release per iteration' rule (docs/METHODOLOGY.md): the column shows what zig-protobuf costs when the caller owns an arena, not a like-for-like comparison with the other libraries' default columns.",
+    "json_decode: zig-protobuf has no leaky JSON decode API (Msg.jsonDecode wraps std.json.parseFromSlice and returns a std.json.Parsed with its own arena), so this variant calls the equivalent std.json.parseFromSliceLeaky(Msg, arena, text, .{}) directly; the generated jsonParse code is the same.",
+    "Everything else (JSON options, validation, field-order and float-formatting caveats) is identical to zig/zig-protobuf."
+  ]
+}

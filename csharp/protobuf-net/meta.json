@@ -1,0 +1,15 @@
+{
+  "language": "csharp",
+  "name": "protobuf-net",
+  "variant": null,
+  "url": "https://github.com/protobuf-net/protobuf-net",
+  "version": "auto",
+  "notes": [
+    "Contract classes generated from bench.proto with protobuf-net's own generator (protobuf-net.Protogen dotnet tool, default options). Generated contracts use packed arrays, ZigZag/FixedSize DataFormat, ProtoMap and a DiscriminatedUnion for the oneof; wire output is byte-identical to the fixtures.",
+    "wire_decode = Serializer.Deserialize<T>(ReadOnlyMemory<byte>) (allocates a new object graph per iteration).",
+    "wire_encode = new MemoryStream(); Serializer.Serialize(ms, msg); ms.ToArray() -- the common user pattern; this includes one extra copy (MemoryStream growth + ToArray) compared to Serializer.Measure/IBufferWriter, which is what users typically pay.",
+    "json_encode/json_decode unsupported: protobuf-net has no canonical ProtoJSON support (its contracts can be fed to System.Text.Json/Newtonsoft, but that is not the ProtoJSON mapping).",
+    "protobuf-net compiles its serializers at first use (RuntimeTypeModel auto-compile); this happens during calibration/warm-up, not in the timed rounds.",
+    "Built with dotnet build -c Release, workstation (non-server) GC, default TieredPGO, InvariantGlobalization. TargetFramework net8.0 with RollForward=Major so a newer runtime can execute it."
+  ]
+}

@@ -1,0 +1,18 @@
+[package]
+name = "proto-bench-rust-protobuf"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "proto-benchmarks harness: rust-protobuf (stepancheg) + protobuf-json-mapping"
+
+[[bin]]
+name = "bench-rust-protobuf"
+path = "src/main.rs"
+
+[dependencies]
+protobuf = "3.7"
+protobuf-json-mapping = "3.7"
+serde_json = { version = "1", features = ["preserve_order"] }
+
+[build-dependencies]
+protobuf-codegen = "3.7"

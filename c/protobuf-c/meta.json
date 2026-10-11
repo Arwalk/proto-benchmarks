@@ -1,0 +1,15 @@
+{
+  "language": "c",
+  "name": "protobuf-c",
+  "variant": null,
+  "url": "https://github.com/protobuf-c/protobuf-c",
+  "version": "auto",
+  "notes": [
+    "Generated code from protoc-gen-c; runtime libprotobuf-c linked via pkg-config. The distribution packages are used (1.4.x on the Ubuntu 24.04 Docker image) because protobuf-c 1.5.2 protoc-gen-c does not compile against libprotobuf >= 30; the generated code and C runtime are unaffected by the libprotobuf version.",
+    "The pack/unpack hot path lives in the distribution's libprotobuf-c shared library, compiled by Ubuntu with -O2 -fstack-protector-strong -D_FORTIFY_SOURCE=3; only bench.c and the generated descriptor tables are compiled with -O3 by this harness. The other C/C++ runtimes in the suite are built from source with -O3.",
+    "wire_decode: <msg>__unpack(NULL, len, data) with the default system allocator, followed by <msg>__free_unpacked inside the timed iteration.",
+    "wire_encode: <msg>__get_packed_size + malloc + <msg>__pack + free per iteration (protobuf-c has no sizing-free serialise API).",
+    "JSON operations are unsupported: protobuf-c has no JSON (ProtoJSON) support.",
+    "Maps are represented as repeated entry messages, so re-encoding preserves the fixture entry order and the output is byte-identical to the fixture."
+  ]
+}

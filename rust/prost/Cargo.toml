@@ -1,0 +1,20 @@
+[package]
+name = "proto-bench-prost"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "proto-benchmarks harness: prost + pbjson"
+
+[[bin]]
+name = "bench-prost"
+path = "src/main.rs"
+
+[dependencies]
+prost = "0.14"
+pbjson = "0.9"
+serde = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+
+[build-dependencies]
+prost-build = "0.14"
+pbjson-build = "0.9"

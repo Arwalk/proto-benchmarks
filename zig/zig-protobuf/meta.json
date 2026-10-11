@@ -1,0 +1,19 @@
+{
+  "language": "zig",
+  "name": "zig-protobuf",
+  "variant": null,
+  "url": "https://github.com/Arwalk/zig-protobuf",
+  "version": "auto",
+  "notes": [
+    "zig-protobuf 6.0.0 at commit 65aa241 (pinned; override with ZIG_PROTOBUF_REF) with protoc-gen-zig generated structs; built with zig build -Doptimize=ReleaseFast -Dcpu=baseline (generic x86-64, matching the other compilers' default targets; Zig would otherwise target the host CPU), no libc.",
+    "Allocator: std.heap.smp_allocator (Zig's general purpose allocator for release builds). Every iteration allocates a new message / buffer from it and frees it (msg.deinit, Writer.Allocating.deinit, allocator.free) inside the timed loop; no arena, no reuse.",
+    "wire_decode: Msg.decode(&std.Io.Reader.fixed(bytes), allocator); wire_encode: msg.encode(&std.Io.Writer.Allocating, allocator).",
+    "wire_encode: the library's writeSubmessage encodes every nested message into a temporary Allocating writer and then copies it into the parent (one alloc + copy + free per submessage; about 15k on large). Much of the gpa column's wire_encode cost is this allocator traffic, which is why the arena/fba variants gain most there.",
+    "json_encode: msg.jsonEncode(.{}, .{ .emit_oneof_field_name = false }, allocator). The library default emit_oneof_field_name=true wraps oneof members in an object named after the oneof (a legacy, non-ProtoJSON format), so it is turned off for the canonical mapping.",
+    "json_decode: Msg.jsonDecode(text, .{}, allocator), which is std.json.parseFromSlice under the hood: the library allocates the decoded message in a std.json.Parsed arena (owned by the call, freed by parsed.deinit()); there is no non-arena JSON decode API.",
+    "wire_bytes_match is false for medium (sizes match, messages are equal): the encoder writes fields in generated-struct order, which places the oneof (fields 7-9) after field 15, so the field order differs from the fixture. Maps are kept as ordered entry lists, so map order is preserved.",
+    "The JSON encoder prints float (32-bit) fields with the shortest representation of their f64 widening (e.g. 575.22f -> 575.219970703125), so json_bytes for large is ~18% larger than the reference; the values parse back to identical messages.",
+    "The sibling directories zig/zig-protobuf-arena and zig/zig-protobuf-fba run bench-arena / bench-fba from this same build (same sources, one zig build) with an arena or fixed-buffer allocator reset per iteration instead of individual frees.",
+    "Build: the package is pinned by content hash in build.zig.zon and build.sh checks out the pinned commit (or $ZIG_PROTOBUF_REF when set) with git, feeds it to zig fetch as a local directory (Zig's HTTP client cannot use MITM proxies) and only rewrites the url/hash in build.zig.zon, with a warning, when another ref is requested. protoc from $PROTOC is passed via -Dprotoc; zig-protobuf still requests its own protoc 36.2 archive as a lazy dependency, which build.sh seeds into the package cache."
+  ]
+}

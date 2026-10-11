@@ -1,0 +1,14 @@
+{
+  "language": "zig",
+  "name": "zig-protobuf",
+  "variant": "fixed-buffer",
+  "url": "https://github.com/Arwalk/zig-protobuf",
+  "version": "auto",
+  "notes": [
+    "Allocation-strategy variant of zig/zig-protobuf: same library, generated code, harness and build flags (ReleaseFast, -Dcpu=baseline, no libc); only the allocator handed to the library differs.",
+    "Allocator: std.heap.FixedBufferAllocator over one 128 MiB slab obtained once from std.heap.page_allocator (pages are touched on first use). Every iteration allocates its message / buffer from the slab and ends with fba.reset(): nothing is freed individually (no msg.deinit, no Allocating.deinit, no free). Growing buffers (encoders, repeated fields) can only be resized in place when they are the last allocation; otherwise a new block is bumped and the data copied, which is why the peak usage (printed in the run log) exceeds the output size.",
+    "This deliberately breaks the suite-wide 'fresh allocation, individual release per iteration' rule (docs/METHODOLOGY.md): the column shows the library's cost with a bump allocator and zero deallocation work, an upper bound rather than a like-for-like comparison with the other libraries' default columns.",
+    "json_decode: zig-protobuf has no leaky JSON decode API (Msg.jsonDecode wraps std.json.parseFromSlice and returns a std.json.Parsed with its own arena), so this variant calls the equivalent std.json.parseFromSliceLeaky(Msg, fba, text, .{}) directly; the generated jsonParse code is the same.",
+    "Everything else (JSON options, validation, field-order and float-formatting caveats) is identical to zig/zig-protobuf."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "rust",
+  "name": "rust-protobuf",
+  "variant": null,
+  "url": "https://github.com/stepancheg/rust-protobuf",
+  "version": "auto",
+  "notes": [
+    "rust-protobuf 3.x (crate `protobuf`, stepancheg) with protobuf-codegen generated structs (protoc backend, default settings: HashMap maps, Vec<u8> bytes, String strings).",
+    "Wire: Message::parse_from_bytes / Message::write_to_bytes allocate a new message / Vec per iteration.",
+    "JSON via protobuf-json-mapping (print_to_string / parse_from_str), the only JSON path the library offers; it works through the generated static reflection tables rather than generated per-message JSON code.",
+    "protobuf-json-mapping has no compact-output option: print_to_string always emits \": \" and \", \" separators, so json_bytes is ~10% larger than the whitespace-free reference JSON (content is otherwise identical canonical ProtoJSON).",
+    "Map iteration order of HashMap is unspecified, so wire_bytes_match may be false for datasets with maps (medium, large); sizes still match.",
+    "Build: cargo build --release --locked with the default release profile (no LTO / PGO / target-cpu)."
+  ]
+}
