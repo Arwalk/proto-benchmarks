@@ -1,0 +1,13 @@
+{
+  "language": "zig",
+  "name": "zig-protobuf",
+  "variant": "native-cpu",
+  "url": "https://github.com/Arwalk/zig-protobuf",
+  "version": "auto",
+  "notes": [
+    "CPU-target variant: the very same zig-protobuf commit, generated code, harness and ReleaseFast build as zig/zig-protobuf, but compiled for the host CPU (zig's default target; no -Dcpu=baseline) so the compiler may use every instruction set the machine has (AVX2/BMI on x86-64). Every other implementation in the suite, including zig/zig-protobuf, is built for the generic x86-64 baseline, so this column is not like-for-like: it shows what zig-protobuf gains from host-specific code generation, not a comparison with the other libraries.",
+    "Allocator and everything else identical to zig/zig-protobuf: std.heap.smp_allocator, every message / buffer allocated and freed individually inside the timed iteration (the like-for-like rules are respected; only the CPU target differs).",
+    "The CPU model the binary was compiled for is reported in harness.runtime (builtin.cpu.model.name), so results from different hosts can be told apart.",
+    "Built by the shared zig/zig-protobuf build (one zig build produces all six executables); this directory only runs build/bin/bench-native."
+  ]
+}

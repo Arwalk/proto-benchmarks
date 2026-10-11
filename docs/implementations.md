@@ -10,6 +10,7 @@ Libraries that cannot do canonical ProtoJSON are still benchmarked on the wire f
 | Zig | [zig-protobuf](https://github.com/Arwalk/zig-protobuf) | 6.0.0 (commit 65aa241, pinned) | ✓ | ✓ | the implementation under test; general purpose allocator, every object freed individually |
 | Zig | zig-protobuf `arena` variant (`zig/zig-protobuf-arena`) | same build | ✓ | ✓ | same binary code, `std.heap.ArenaAllocator` reset per iteration; see "allocation-strategy variants" in `docs/METHODOLOGY.md` |
 | Zig | zig-protobuf `fixed-buffer` variant (`zig/zig-protobuf-fba`) | same build | ✓ | ✓ | same binary code, `std.heap.FixedBufferAllocator` reset per iteration; same caveat |
+| Zig | zig-protobuf `native-cpu` variants (`zig/zig-protobuf-native`, `-arena-native`, `-fba-native`) | same build | ✓ | ✓ | the three strategies above compiled for the host CPU instead of the x86-64 baseline; not like-for-like, see "CPU-target variants" in `docs/METHODOLOGY.md` |
 | Rust | [prost](https://github.com/tokio-rs/prost) + [pbjson](https://github.com/influxdata/pbjson) | 0.14 / 0.9 | ✓ | ✓ | ~145 M recent crates.io downloads; JSON needs the pbjson serde generator |
 | Rust | [rust-protobuf](https://github.com/stepancheg/rust-protobuf) | 3.7 | ✓ | ✓ | ~29 M downloads; JSON through `protobuf-json-mapping` (reflection) |
 | C | [protobuf-c](https://github.com/protobuf-c/protobuf-c) | 1.4/1.5 (distro) | ✓ | – | 3 k stars; no JSON |

@@ -83,6 +83,8 @@ fi
 # 4. Generate + build.
 libver=$(sed -n 's/.*\.version = "\([^"]*\)".*/\1/p' "$SRC/build.zig.zon" | head -1)
 version="$libver (git $short)"
+# -Dcpu=baseline: generic x86-64 like every other compiler's default. build.zig additionally
+# compiles the three *-native executables for the host CPU (zig/zig-protobuf-*-native).
 zig build -Doptimize=ReleaseFast -Dcpu=baseline \
   -Dprotoc="$PROTOC_ABS" -Dproto-dir="$PROTO_DIR_ABS" -Dlibrary-version="$version" \
   --prefix "$PWD/build" --cache-dir "$ZIG_LOCAL_CACHE_DIR" --global-cache-dir "$ZIG_GLOBAL_CACHE_DIR"

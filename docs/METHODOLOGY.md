@@ -78,6 +78,15 @@ arena can expect, not a like-for-like comparison with the other libraries' defau
 `zig/zig-protobuf` column (general purpose allocator, everything freed individually) remains the
 comparable one and the default baseline.
 
+CPU-target variants: `zig/zig-protobuf-native`, `zig/zig-protobuf-arena-native` and
+`zig/zig-protobuf-fba-native` are the same three strategies compiled for the *host* CPU (Zig's
+default target, no `-Dcpu=baseline`), so the compiler may use AVX2/BMI and whatever else the machine
+offers. Every other column, including `zig/zig-protobuf`, is built for the generic x86-64 baseline
+(the default of gcc, rustc, Go, Swift and .NET/HotSpot's AOT parts), so these three are not
+like-for-like either: they show what zig-protobuf gains from host-specific code generation. The
+compiled CPU model is recorded in `harness.runtime`. All six Zig executables come out of one
+`zig build`.
+
 Machine conditions (`run.sh`):
 
 * one benchmark process at a time, pinned with `taskset` to the CPU set allowed to the

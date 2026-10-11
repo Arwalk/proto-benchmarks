@@ -17,7 +17,15 @@ pub fn build(b: *std.Build) !void {
         .target = target,
         .optimize = optimize,
     });
-    const protobuf_mod = protobuf_dep.module("protobuf");
+
+    // Second CPU target: the host CPU (what `zig build` does without -Dcpu). The *-native
+    // executables are the same code compiled for it; everything else in the suite is built for
+    // the generic x86-64 baseline, so these variants are not like-for-like (see docs/METHODOLOGY.md).
+    const native_target = b.resolveTargetQuery(.{});
+    const protobuf_dep_native = b.dependency("protobuf", .{
+        .target = native_target,
+        .optimize = optimize,
+    });
 
     const proto_dir: std.Build.LazyPath = if (proto_dir_opt) |p| .{ .cwd_relative = p } else b.path("../../proto");
 
@@ -31,39 +39,48 @@ pub fn build(b: *std.Build) !void {
     const gen_step = b.step("gen-proto", "generate Zig sources from bench.proto");
     gen_step.dependOn(&protoc_step.step);
 
-    const gen_mod = b.createModule(.{
-        .root_source_file = b.path("gen/bench.pb.zig"),
-        .target = target,
-        .optimize = optimize,
-        .imports = &.{.{ .name = "protobuf", .module = protobuf_mod }},
-    });
-
-    // One executable per allocation strategy (see src/main.zig `Strategy`); the sibling
-    // directories zig-protobuf-arena and zig-protobuf-fba run the latter two.
-    const variants = [_]struct { exe: []const u8, allocator: []const u8 }{
+    // One executable per allocation strategy (see src/main.zig `Strategy`) and per CPU target:
+    // bench, bench-arena, bench-fba (the -Dcpu target, baseline in build.sh) and the same three
+    // with a -native suffix (host CPU). The sibling directories zig-protobuf-arena, -fba and the
+    // three *-native directories run them from this single build.
+    const cpus = [_]struct { suffix: []const u8, native: bool, target: std.Build.ResolvedTarget, dep: *std.Build.Dependency }{
+        .{ .suffix = "", .native = false, .target = target, .dep = protobuf_dep },
+        .{ .suffix = "-native", .native = true, .target = native_target, .dep = protobuf_dep_native },
+    };
+    const strategies = [_]struct { exe: []const u8, allocator: []const u8 }{
         .{ .exe = "bench", .allocator = "gpa" },
         .{ .exe = "bench-arena", .allocator = "arena" },
         .{ .exe = "bench-fba", .allocator = "fixed" },
     };
-    for (variants) |v| {
-        const options = b.addOptions();
-        options.addOption([]const u8, "library_version", library_version);
-        options.addOption([]const u8, "allocator", v.allocator);
-
-        const exe = b.addExecutable(.{
-            .name = v.exe,
-            .root_module = b.createModule(.{
-                .root_source_file = b.path("src/main.zig"),
-                .target = target,
-                .optimize = optimize,
-                .imports = &.{
-                    .{ .name = "protobuf", .module = protobuf_mod },
-                    .{ .name = "bench_pb", .module = gen_mod },
-                },
-            }),
+    for (cpus) |c| {
+        const protobuf_mod = c.dep.module("protobuf");
+        const gen_mod = b.createModule(.{
+            .root_source_file = b.path("gen/bench.pb.zig"),
+            .target = c.target,
+            .optimize = optimize,
+            .imports = &.{.{ .name = "protobuf", .module = protobuf_mod }},
         });
-        exe.root_module.addOptions("build_options", options);
-        exe.step.dependOn(&protoc_step.step);
-        b.installArtifact(exe);
+        for (strategies) |v| {
+            const options = b.addOptions();
+            options.addOption([]const u8, "library_version", library_version);
+            options.addOption([]const u8, "allocator", v.allocator);
+            options.addOption(bool, "native_cpu", c.native);
+
+            const exe = b.addExecutable(.{
+                .name = b.fmt("{s}{s}", .{ v.exe, c.suffix }),
+                .root_module = b.createModule(.{
+                    .root_source_file = b.path("src/main.zig"),
+                    .target = c.target,
+                    .optimize = optimize,
+                    .imports = &.{
+                        .{ .name = "protobuf", .module = protobuf_mod },
+                        .{ .name = "bench_pb", .module = gen_mod },
+                    },
+                }),
+            });
+            exe.root_module.addOptions("build_options", options);
+            exe.step.dependOn(&protoc_step.step);
+            b.installArtifact(exe);
+        }
     }
 }

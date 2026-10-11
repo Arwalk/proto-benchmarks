@@ -13,8 +13,10 @@ one self-contained HTML report.
 
 Besides the default `zig/zig-protobuf` column (general purpose allocator, individual frees), two
 allocation-strategy variants of the same build are measured: `zig/zig-protobuf-arena` (arena reset
-per iteration) and `zig/zig-protobuf-fba` (fixed buffer reset per iteration). They are labelled as
-not like-for-like in the report; see `docs/METHODOLOGY.md`.
+per iteration) and `zig/zig-protobuf-fba` (fixed buffer reset per iteration), plus the same three
+compiled for the host CPU instead of the generic x86-64 baseline (`zig/zig-protobuf-native`,
+`-arena-native`, `-fba-native`). All of them are labelled as not like-for-like in the report; see
+`docs/METHODOLOGY.md`.
 
 ## Run it with Docker (recommended)
 

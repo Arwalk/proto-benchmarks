@@ -24,11 +24,14 @@ const gpa: Allocator = std.heap.smp_allocator;
 const Strategy = enum { gpa, arena, fixed };
 const strategy: Strategy = std.meta.stringToEnum(Strategy, build_options.allocator) orelse
     @compileError("unknown allocator strategy " ++ build_options.allocator);
-const impl_id = switch (strategy) {
+/// true for the *-native executables: same code compiled for the host CPU instead of the
+/// generic x86-64 baseline used by every other implementation (see docs/METHODOLOGY.md).
+const native_cpu: bool = build_options.native_cpu;
+const impl_id = (switch (strategy) {
     .gpa => "zig/zig-protobuf",
     .arena => "zig/zig-protobuf-arena",
     .fixed => "zig/zig-protobuf-fba",
-};
+}) ++ (if (native_cpu) "-native" else "");
 /// Slab of the fixed-buffer strategy. Pages are only touched as they are used; the peak
 /// usage per dataset is printed to stderr.
 const fixed_capacity: usize = 128 << 20;
@@ -83,9 +86,11 @@ const json_pb_options: protobuf.json.Options = .{ .emit_oneof_field_name = false
 const json_std_options: std.json.Stringify.Options = .{};
 const json_parse_options: std.json.ParseOptions = .{};
 
-const runtime_string = std.fmt.comptimePrint("Zig {s} ({s}, {s})", .{
+const runtime_string = std.fmt.comptimePrint("Zig {s} ({s}, cpu {s}{s}, {s})", .{
     builtin.zig_version_string,
     @tagName(builtin.mode),
+    builtin.cpu.model.name,
+    if (native_cpu) " = host" else " = baseline",
     switch (strategy) {
         .gpa => "std.heap.smp_allocator",
         .arena => "std.heap.ArenaAllocator reset per iteration",
