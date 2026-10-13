@@ -5,7 +5,7 @@
   "url": "https://github.com/Arwalk/zig-protobuf",
   "version": "auto",
   "notes": [
-    "zig-protobuf 6.0.0 at commit 65aa241 (pinned; override with ZIG_PROTOBUF_REF) with protoc-gen-zig generated structs; built with zig build -Doptimize=ReleaseFast -Dcpu=baseline (generic x86-64, matching the other compilers' default targets; Zig would otherwise target the host CPU), no libc.",
+    "zig-protobuf 7.0.0 at commit e9e18c7 (pinned; override with ZIG_PROTOBUF_REF) with protoc-gen-zig generated structs; built with zig build -Doptimize=ReleaseFast -Dcpu=baseline (generic x86-64, matching the other compilers' default targets; Zig would otherwise target the host CPU), no libc.",
     "Allocator: std.heap.smp_allocator (Zig's general purpose allocator for release builds). Every iteration allocates a new message / buffer from it and frees it (msg.deinit, Writer.Allocating.deinit, allocator.free) inside the timed loop; no arena, no reuse.",
     "wire_decode: Msg.decode(&std.Io.Reader.fixed(bytes), allocator); wire_encode: msg.encode(&std.Io.Writer.Allocating, allocator).",
     "wire_encode: the library's writeSubmessage encodes every nested message into a temporary Allocating writer and then copies it into the parent (one alloc + copy + free per submessage; about 15k on large). Much of the gpa column's wire_encode cost is this allocator traffic, which is why the arena/fba variants gain most there.",

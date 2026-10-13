@@ -7,7 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 : "${PROTOC:=protoc}"
 : "${PROTO_DIR:=$(cd ../../proto && pwd)}"
-: "${ZIG_PROTOBUF_REF:=65aa24107dedbd87fece8bb95c19c2d545d23e1a}"
+: "${ZIG_PROTOBUF_REF:=e9e18c7664b8c950e5fc679259c968dd66ccc48b}"
 PROTOC_ABS=$(realpath "$(command -v "$PROTOC")")
 PROTO_DIR_ABS=$(realpath "$PROTO_DIR")
 REPO=https://github.com/Arwalk/zig-protobuf
@@ -87,5 +87,5 @@ version="$libver (git $short)"
 # compiles the three *-native executables for the host CPU (zig/zig-protobuf-*-native).
 zig build -Doptimize=ReleaseFast -Dcpu=baseline \
   -Dprotoc="$PROTOC_ABS" -Dproto-dir="$PROTO_DIR_ABS" -Dlibrary-version="$version" \
-  --prefix "$PWD/build" --cache-dir "$ZIG_LOCAL_CACHE_DIR" --global-cache-dir "$ZIG_GLOBAL_CACHE_DIR"
+  --prefix "$PWD/build" --cache-dir "$ZIG_LOCAL_CACHE_DIR"
 echo "$version" > build/version.txt

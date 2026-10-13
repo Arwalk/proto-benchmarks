@@ -37,7 +37,7 @@ pub fn build(b: *std.Build) !void {
         .include_directories = &.{proto_dir},
     });
     const gen_step = b.step("gen-proto", "generate Zig sources from bench.proto");
-    gen_step.dependOn(&protoc_step.step);
+    gen_step.dependOn(protoc_step.step);
 
     // One executable per allocation strategy (see src/main.zig `Strategy`) and per CPU target:
     // bench, bench-arena, bench-fba (the -Dcpu target, baseline in build.sh) and the same three
@@ -79,7 +79,7 @@ pub fn build(b: *std.Build) !void {
                 }),
             });
             exe.root_module.addOptions("build_options", options);
-            exe.step.dependOn(&protoc_step.step);
+            exe.step.dependOn(protoc_step.step);
             b.installArtifact(exe);
         }
     }

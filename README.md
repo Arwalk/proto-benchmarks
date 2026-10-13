@@ -45,7 +45,7 @@ another revision: `docker build --build-arg ZIG_PROTOBUF_REF=<branch-or-sha> ...
 ## Run it natively
 
 Install the toolchains listed in `docs/IMPLEMENTING.md` (protoc 36.2, gcc/cmake, libprotobuf 36.2,
-protobuf-c, rustup, Go, JDK 21 + Maven, Python 3, .NET SDK 8, Node 22, Swift 6.2, Zig 0.16), then:
+protobuf-c, rustup, Go, JDK 21 + Maven, Python 3, .NET SDK 8, Node 22, Swift 6.2, Zig 0.17), then:
 
 ```bash
 ./run.sh                          # build all, run all, cross-validate, aggregate

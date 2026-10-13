@@ -10,7 +10,7 @@ FROM ubuntu:24.04 AS toolchain
 ARG PROTOBUF_VERSION=36.2
 ARG GO_VERSION=1.26.0
 ARG NODE_VERSION=22.22.1
-ARG ZIG_VERSION=0.16.0
+ARG ZIG_VERSION=0.17.0
 ARG SWIFT_VERSION=6.2.4
 ARG RUST_TOOLCHAIN=stable
 ARG DEBIAN_FRONTEND=noninteractive
@@ -112,8 +112,8 @@ FROM toolchain AS bench
 WORKDIR /bench
 COPY . /bench
 ENV PROTOC=/usr/local/bin/protoc PROTOBUF_PREFIX=/usr/local PROTO_BENCH_IMAGE=proto-benchmarks
-# zig-protobuf commit under test (the v6.0.0 line); pass --build-arg ZIG_PROTOBUF_REF=<sha-or-branch> to benchmark another one.
-ARG ZIG_PROTOBUF_REF=65aa24107dedbd87fece8bb95c19c2d545d23e1a
+# zig-protobuf commit under test (the v7.0.0 line, Zig 0.17); pass --build-arg ZIG_PROTOBUF_REF=<sha-or-branch> to benchmark another one.
+ARG ZIG_PROTOBUF_REF=e9e18c7664b8c950e5fc679259c968dd66ccc48b
 ENV ZIG_PROTOBUF_REF=${ZIG_PROTOBUF_REF}
 # Only used while building the image (e.g. to hand proxy settings to Maven); not persisted.
 ARG JAVA_TOOL_OPTIONS=""
