@@ -7,12 +7,12 @@
 # container needs no network and starts benchmarking immediately.
 FROM ubuntu:24.04 AS toolchain
 
-ARG PROTOBUF_VERSION=36.2
-ARG GO_VERSION=1.26.0
-ARG NODE_VERSION=22.22.1
-ARG ZIG_VERSION=0.17.0
-ARG SWIFT_VERSION=6.2.4
-ARG RUST_TOOLCHAIN=stable
+# Layer-cache note: Docker hands every ARG in scope to every later RUN as an environment variable,
+# and that environment is part of the layer's cache key. An ARG declared here would therefore
+# invalidate the whole stage when its value changes, even in layers that never use it. Each
+# toolchain version is instead declared immediately before the layer that installs it, so bumping
+# one toolchain only rebuilds that layer and the ones after it. Keep the cheapest / most often
+# bumped toolchains last.
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV LANG=C.UTF-8 \
@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libsqlite3-0 libstdc++-13-dev libxml2-dev libz3-dev tzdata zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
+ARG SWIFT_VERSION=6.2.4
 # ---- Swift (official Linux toolchain tarball)
 RUN curl -fsSL -o /tmp/swift.tar.gz \
       "https://download.swift.org/swift-${SWIFT_VERSION}-release/ubuntu2404/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE-ubuntu24.04.tar.gz" \
@@ -53,6 +54,7 @@ ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
     NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt \
     CARGO_HTTP_CAINFO=/etc/ssl/certs/ca-certificates.crt
 
+ARG PROTOBUF_VERSION=36.2
 # ---- protoc (release binary; same version as the C++/Java/Python/C# runtimes and zig-protobuf's CI)
 RUN curl -fsSL -o /tmp/protoc.zip \
       "https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip" \
@@ -77,23 +79,21 @@ RUN curl -fsSL -o /tmp/protobuf.tar.gz \
 RUN apt-get update && apt-get install -y --no-install-recommends protobuf-c-compiler libprotobuf-c-dev \
     && rm -rf /var/lib/apt/lists/* && command -v protoc-gen-c && pkg-config --modversion libprotobuf-c
 
+ARG RUST_TOOLCHAIN=stable
 # ---- Rust
 RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain "${RUST_TOOLCHAIN}" --no-modify-path \
     && rustc --version && cargo --version
 
+ARG GO_VERSION=1.26.0
 # ---- Go
 RUN curl -fsSL -o /tmp/go.tgz "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" \
     && tar -C /usr/local -xzf /tmp/go.tgz && rm /tmp/go.tgz && go version
 
+ARG NODE_VERSION=22.22.1
 # ---- Node.js
 RUN curl -fsSL -o /tmp/node.tar.xz "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
     && mkdir -p /usr/local/node && tar -xJf /tmp/node.tar.xz -C /usr/local/node --strip-components=1 \
     && rm /tmp/node.tar.xz && node --version && npm --version
-
-# ---- Zig
-RUN curl -fsSL -o /tmp/zig.tar.xz "https://ziglang.org/download/${ZIG_VERSION}/zig-x86_64-linux-${ZIG_VERSION}.tar.xz" \
-    && mkdir -p /usr/local/zig && tar -xJf /tmp/zig.tar.xz -C /usr/local/zig --strip-components=1 \
-    && rm /tmp/zig.tar.xz && zig version
 
 # ---- protoc release archive, kept for zig-protobuf: its build.zig.zon declares the protoc release
 #      zip as a (lazy) package dependency and requests it even when -Dprotoc points at an installed
@@ -106,6 +106,13 @@ RUN mkdir -p "$PROTOC_ARCHIVE_DIR" \
     && unzip -tq "$PROTOC_ARCHIVE_DIR/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip"
 
 RUN swift --version && java -version 2>&1 | head -n1 && mvn --version | head -n1 && dotnet --version && python3 --version
+
+# ---- Zig: deliberately the last toolchain layer. Zig moves fast (zig-protobuf tracks it closely),
+#      so bumping the version must only rebuild this layer and the harness stage below.
+ARG ZIG_VERSION=0.17.0
+RUN curl -fsSL -o /tmp/zig.tar.xz "https://ziglang.org/download/${ZIG_VERSION}/zig-x86_64-linux-${ZIG_VERSION}.tar.xz" \
+    && mkdir -p /usr/local/zig && tar -xJf /tmp/zig.tar.xz -C /usr/local/zig --strip-components=1 \
+    && rm /tmp/zig.tar.xz && zig version
 
 # ---- the benchmark suite: build everything now so that running needs no network
 FROM toolchain AS bench
