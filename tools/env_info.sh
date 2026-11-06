@@ -46,7 +46,8 @@ $(ver python3 python3 --version),
 $(ver dotnet dotnet --version),
 $(ver node node --version),
 $(ver swift swift --version),
-$(ver zig zig version)
+$(ver zig zig version),
+$(ver goose goose version)
   }
 }
 JSON

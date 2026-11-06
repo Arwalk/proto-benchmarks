@@ -58,7 +58,8 @@ Per-iteration rules that keep implementations comparable:
 
 * A **new** output buffer / message object per iteration; no buffer or object reuse, no
   object pools, no arenas reset per iteration (unless a library has no allocating API at all, in
-  which case the note is shown in the report).
+  which case the note is shown in the report). `goose/goose-protobuf` is such a case for messages:
+  they live in the library's global pools, which `M_clear` hands storage back to.
 * Any mandatory cleanup (free, deinit, release) is inside the timed iteration.
 * GC languages do not call the GC manually.
 * A black hole consumes one scalar of the decoded message / the length of the produced buffer so
@@ -96,7 +97,7 @@ Machine conditions (`run.sh`):
   thread, so pinning to *one* core would silently switch the JVM to SerialGC with two compiler
   threads and set `GOMAXPROCS=1`.) `--core C` restricts every implementation to one core instead, for
   a pure single-core CPU-cost comparison; the report shows which mode was used;
-* release builds for everyone (`-O3`, `--release`, `ReleaseFast`, `-c Release`); no LTO/PGO/
+* release builds for everyone (`-O3`, `--release`, `ReleaseFast`, `-c Release`, `goose build`'s `-O2`); no LTO/PGO/
   `-march=native` for anyone;
 * machine, kernel, governor, SMT state and every toolchain version are recorded in
   `results/environment.json` and shown in the report.

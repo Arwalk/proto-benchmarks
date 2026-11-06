@@ -1,8 +1,8 @@
 # proto-benchmarks
 
-A fair, reproducible benchmark of Protocol Buffers implementations across ten languages, built to
+A fair, reproducible benchmark of Protocol Buffers implementations across eleven languages, built to
 compare [zig-protobuf](https://github.com/Arwalk/zig-protobuf) with the popular implementations in
-Rust, C, C++, Java, Python, C#, JavaScript, Go and Swift. It measures wire encoding/decoding and
+Rust, C, C++, Java, Python, C#, JavaScript, Go, Swift and Goose. It measures wire encoding/decoding and
 canonical JSON (ProtoJSON) encoding/decoding on three shared datasets and renders everything into
 one self-contained HTML report.
 
@@ -30,7 +30,7 @@ docker run --rm --cpuset-cpus=0-2 -v "$PWD/results:/bench/results" proto-benchma
 Or with compose: `docker compose run --rm bench` (options pass through, e.g.
 `docker compose run --rm bench --quick`).
 
-The image is large (about 10 GB: ten toolchains plus prebuilt harnesses). The container's entry point
+The image is large (about 10 GB: eleven toolchains plus prebuilt harnesses). The container's entry point
 is `./run.sh --skip-build`, so it starts benchmarking immediately; any `run.sh` option can be appended.
 
 `--cpuset-cpus` gives the container a few cores; the runner pins every benchmark process to that
@@ -45,7 +45,7 @@ another revision: `docker build --build-arg ZIG_PROTOBUF_REF=<branch-or-sha> ...
 ## Run it natively
 
 Install the toolchains listed in `docs/IMPLEMENTING.md` (protoc 36.2, gcc/cmake, libprotobuf 36.2,
-protobuf-c, rustup, Go, JDK 21 + Maven, Python 3, .NET SDK 8, Node 22, Swift 6.2, Zig 0.17), then:
+protobuf-c, rustup, Go, JDK 21 + Maven, Python 3, .NET SDK 8, Node 22, Swift 6.2, Zig 0.17, Goose v2026.3), then:
 
 ```bash
 ./run.sh                          # build all, run all, cross-validate, aggregate

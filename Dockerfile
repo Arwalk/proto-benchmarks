@@ -107,9 +107,16 @@ RUN mkdir -p "$PROTOC_ARCHIVE_DIR" \
 
 RUN swift --version && java -version 2>&1 | head -n1 && mvn --version | head -n1 && dotnet --version && python3 --version
 
+ARG GOOSE_VERSION=v2026.3
+# ---- Goose (the release goose-protobuf is tested with). The binary finds its stdlib through the
+#      symlink, and using /usr/local/bin leaves the global PATH, and so the layers above, untouched.
+RUN curl -fsSL -o /tmp/goose.tar.gz "https://github.com/aardappel/goose/releases/download/${GOOSE_VERSION}/goose-${GOOSE_VERSION}-linux-x64.tar.gz" \
+    && mkdir -p /usr/local/goose && tar -xzf /tmp/goose.tar.gz -C /usr/local/goose --strip-components=1 \
+    && rm /tmp/goose.tar.gz && ln -s /usr/local/goose/goose /usr/local/bin/goose && goose version
+
 # ---- Zig: deliberately the last toolchain layer. Zig moves fast (zig-protobuf tracks it closely),
 #      so bumping the version must only rebuild this layer and the harness stage below.
-ARG ZIG_VERSION=0.17.0
+ARG ZIG_VERSION=0.17.1
 RUN curl -fsSL -o /tmp/zig.tar.xz "https://ziglang.org/download/${ZIG_VERSION}/zig-x86_64-linux-${ZIG_VERSION}.tar.xz" \
     && mkdir -p /usr/local/zig && tar -xJf /tmp/zig.tar.xz -C /usr/local/zig --strip-components=1 \
     && rm /tmp/zig.tar.xz && zig version
@@ -119,9 +126,12 @@ FROM toolchain AS bench
 WORKDIR /bench
 COPY . /bench
 ENV PROTOC=/usr/local/bin/protoc PROTOBUF_PREFIX=/usr/local PROTO_BENCH_IMAGE=proto-benchmarks
-# zig-protobuf commit under test (the v7.0.0 line, Zig 0.17); pass --build-arg ZIG_PROTOBUF_REF=<sha-or-branch> to benchmark another one.
-ARG ZIG_PROTOBUF_REF=e9e18c7664b8c950e5fc679259c968dd66ccc48b
+# zig-protobuf commit under test (tag v7.0.0, Zig 0.17.1); pass --build-arg ZIG_PROTOBUF_REF=<sha-or-branch> to benchmark another one.
+ARG ZIG_PROTOBUF_REF=8033e1eb3249a9e4d9b064d803504adddc2d89e1
 ENV ZIG_PROTOBUF_REF=${ZIG_PROTOBUF_REF}
+# goose-protobuf commit under test (no release tag yet); --build-arg GOOSE_PROTOBUF_REF=<sha-or-branch> benchmarks another one.
+ARG GOOSE_PROTOBUF_REF=a9e99bb010eb6817d374de8e93666dc955eb8a01
+ENV GOOSE_PROTOBUF_REF=${GOOSE_PROTOBUF_REF}
 # Only used while building the image (e.g. to hand proxy settings to Maven); not persisted.
 ARG JAVA_TOOL_OPTIONS=""
 RUN ./run.sh --build-only --results /tmp/build-results || (cat /tmp/build-results/failures.txt; exit 1) \

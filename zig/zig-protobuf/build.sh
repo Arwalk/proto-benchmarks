@@ -7,7 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 : "${PROTOC:=protoc}"
 : "${PROTO_DIR:=$(cd ../../proto && pwd)}"
-: "${ZIG_PROTOBUF_REF:=e9e18c7664b8c950e5fc679259c968dd66ccc48b}"
+: "${ZIG_PROTOBUF_REF:=8033e1eb3249a9e4d9b064d803504adddc2d89e1}"
 PROTOC_ABS=$(realpath "$(command -v "$PROTOC")")
 PROTO_DIR_ABS=$(realpath "$PROTO_DIR")
 REPO=https://github.com/Arwalk/zig-protobuf

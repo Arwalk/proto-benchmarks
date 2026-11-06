@@ -1,0 +1,16 @@
+{
+  "language": "goose",
+  "name": "goose-protobuf",
+  "variant": null,
+  "url": "https://github.com/Arwalk/goose-protobuf",
+  "version": "auto",
+  "notes": [
+    "goose-protobuf 0.1.0-dev at commit a9e99bb (pinned, the project has no release tag yet; override with GOOSE_PROTOBUF_REF) with protoc-gen-goose generated code, Goose v2026.3. The library is pre-1.0 and describes itself as an experiment; it is included by request, not by the popularity criterion of docs/implementations.md.",
+    "Build: goose build at its defaults (no --debug). Goose compiles to C and runs the system C compiler at -O2, generic x86-64, no -march=native; -O2 is the highest level goose build offers, whereas the other C/C++ harnesses compile with -O3. Goose's bounds checks stay on except where its compiler proves them redundant, as in any goose build.",
+    "wire_decode: a new local message, M_decode(bytes, m), then M_clear(m), all inside the timed iteration. Messages and their contents live in global per-type pools: this is the library's only memory model, so M_clear hands storage back to pools that the next iteration reuses, and the rule against object pools cannot be applied to this column.",
+    "wire_encode: a new local u8[>..] per iteration, M_encode(m, out), no pre-sizing with M_size_of. A local growable array lives on Goose's data stack: it grows in place without moving and is released by resetting the stack top, so there is no malloc or free per iteration. That is how the language allocates, not a harness optimisation.",
+    "JSON operations are unsupported: goose-protobuf has no JSON (ProtoJSON) support (binary wire format only).",
+    "wire_bytes_match is true for all three datasets: fields and map entries are written in the fixture's order.",
+    "Build: build.sh checks out the pinned commit with git, builds the plugin from that checkout, generates bench.goose with $PROTOC and vendors the pb_wire runtime with the project's scripts/vendor_runtime.sh; generated code only builds against the runtime of the same commit. Everything stays under build/, including GOOSE_HOME."
+  ]
+}

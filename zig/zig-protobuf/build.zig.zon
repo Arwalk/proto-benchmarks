@@ -2,11 +2,11 @@
     .name = .bench,
     .version = "0.0.0",
     .fingerprint = 0x66d8e325b8ef45aa,
-    .minimum_zig_version = "0.17.0",
+    .minimum_zig_version = "0.17.1",
     .dependencies = .{
         .protobuf = .{
-            .url = "git+https://github.com/Arwalk/zig-protobuf#e9e18c7664b8c950e5fc679259c968dd66ccc48b",
-            .hash = "protobuf-7.0.0-0e82aqFhNADVgEgPYPI7ddEg_dzhphBToYgkjQTrMKWv",
+            .url = "git+https://github.com/Arwalk/zig-protobuf#8033e1eb3249a9e4d9b064d803504adddc2d89e1",
+            .hash = "protobuf-7.0.0-0e82al-1OwBluM-Yzp86AUg3dvrhHETggVKXt6s854le",
         },
     },
     .paths = .{

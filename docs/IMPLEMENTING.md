@@ -24,7 +24,8 @@ The Docker image (and a developer machine) provides only base toolchains on `PAT
 | C# | `dotnet` SDK 8 |
 | JavaScript | `node` 22, `npm` |
 | Swift | `swift` 6.2 |
-| Zig | `zig` 0.17.0; optional `PROTOC_ARCHIVE_DIR` holding the protoc release zip that zig-protobuf declares as a package dependency (the Docker image sets it; otherwise `zig/zig-protobuf/build.sh` downloads the zip from GitHub) |
+| Goose | `goose` v2026.3 (needs a C compiler; `goose version` prints `goose runtime 4d3da949e563`) |
+| Zig | `zig` 0.17.1; optional `PROTOC_ARCHIVE_DIR` holding the protoc release zip that zig-protobuf declares as a package dependency (the Docker image sets it; otherwise `zig/zig-protobuf/build.sh` downloads the zip from GitHub) |
 
 Anything else (protoc plugins such as `protoc-gen-go`, `protoc-gen-es`, `protoc-gen-swift`,
 `pbjs`, `protogen`, nanopb generator and runtime sources, Maven/npm/NuGet/crates packages) must be
