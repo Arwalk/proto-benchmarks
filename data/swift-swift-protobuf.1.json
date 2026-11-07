@@ -1,0 +1,757 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "swift",
+  "name": "swift-protobuf",
+  "runtime": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+  "library_version": "1.38.1"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3018243919,
+   "steady": true,
+   "batch": 16384,
+   "rounds": [
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1007742142
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1007706942
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1007435872
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1008188617
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1007661481
+    },
+    {
+     "iterations": 1409024,
+     "elapsed_ns": 1009097260
+    },
+    {
+     "iterations": 1409024,
+     "elapsed_ns": 1003593442
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1007067286
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1008229826
+    },
+    {
+     "iterations": 1441792,
+     "elapsed_ns": 1007648379
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3071549237,
+   "steady": true,
+   "batch": 16384,
+   "rounds": [
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1012844395
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1013092370
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1012353716
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1011989756
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1012458318
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1012561941
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1010862036
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1012096325
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1010911169
+    },
+    {
+     "iterations": 1261568,
+     "elapsed_ns": 1011111424
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3038687525,
+   "steady": true,
+   "batch": 2048,
+   "rounds": [
+    {
+     "iterations": 155648,
+     "elapsed_ns": 1010712445
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1010351297
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1012502975
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1008455402
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1008095401
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1005592465
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1006318827
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1011744414
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1012241156
+    },
+    {
+     "iterations": 157696,
+     "elapsed_ns": 1008318711
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3037250800,
+   "steady": true,
+   "batch": 2048,
+   "rounds": [
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1003627765
+    },
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1006511125
+    },
+    {
+     "iterations": 133120,
+     "elapsed_ns": 1014252825
+    },
+    {
+     "iterations": 133120,
+     "elapsed_ns": 1013328791
+    },
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1002463535
+    },
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1003662603
+    },
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1005229581
+    },
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1005456315
+    },
+    {
+     "iterations": 133120,
+     "elapsed_ns": 1014391232
+    },
+    {
+     "iterations": 131072,
+     "elapsed_ns": 1006103652
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3031865798,
+   "steady": true,
+   "batch": 256,
+   "rounds": [
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1006844657
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1008457437
+    },
+    {
+     "iterations": 21760,
+     "elapsed_ns": 1001393642
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1009207928
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1008226754
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1007576227
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1009263361
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1009272410
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1008396558
+    },
+    {
+     "iterations": 22016,
+     "elapsed_ns": 1008486960
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3062522223,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1018253216
+    },
+    {
+     "iterations": 6784,
+     "elapsed_ns": 1000663782
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1017806634
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1018425956
+    },
+    {
+     "iterations": 6784,
+     "elapsed_ns": 1002581990
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1016674894
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1018344828
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1017508867
+    },
+    {
+     "iterations": 6784,
+     "elapsed_ns": 1001394042
+    },
+    {
+     "iterations": 6784,
+     "elapsed_ns": 1003208948
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3094777229,
+   "steady": true,
+   "batch": 64,
+   "rounds": [
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1011992870
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1016876681
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1016985675
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1012732877
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1012105749
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1013084322
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1013518507
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1012014037
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1011478856
+    },
+    {
+     "iterations": 3776,
+     "elapsed_ns": 1011544837
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3064679209,
+   "steady": true,
+   "batch": 32,
+   "rounds": [
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1009615285
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1011356537
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1009623940
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1011057928
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1010849988
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1010553635
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1009807444
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1009046311
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1009967525
+    },
+    {
+     "iterations": 2784,
+     "elapsed_ns": 1010718082
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3053194285,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 116,
+     "elapsed_ns": 1001025751
+    },
+    {
+     "iterations": 118,
+     "elapsed_ns": 1016643943
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1000010559
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1000081624
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1004349644
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1002831185
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1002657054
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1002715405
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1000215745
+    },
+    {
+     "iterations": 116,
+     "elapsed_ns": 1001241027
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3007015610,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 72,
+     "elapsed_ns": 1001629874
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1002604597
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1001206781
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1002074863
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1002126740
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1002251204
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1001903455
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1002892370
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1002159918
+    },
+    {
+     "iterations": 72,
+     "elapsed_ns": 1003184812
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3166131810,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 21,
+     "elapsed_ns": 1007063931
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1008946124
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1006869764
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1006260944
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1008465782
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1007372808
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1007657242
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1005333097
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1007756789
+    },
+    {
+     "iterations": 21,
+     "elapsed_ns": 1013611311
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3310315621,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 11,
+     "elapsed_ns": 1011435640
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1009859873
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1008786024
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1010430478
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1007164051
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1009561831
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1009546844
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1007053010
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1011812943
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1011526471
+    }
+   ]
+  }
+ ],
+ "implementation": {
+  "id": "swift/swift-protobuf",
+  "language": "swift",
+  "name": "swift-protobuf",
+  "variant": null,
+  "version": "1.38.1",
+  "url": "https://github.com/apple/swift-protobuf",
+  "notes": [
+   "apple/swift-protobuf with protoc-gen-swift generated structs (Visibility=Internal); built with swift build -c release (SwiftPM default release settings, no -Ounchecked / cross-module optimisation flags beyond the default).",
+   "Wire: Message(serializedBytes: [UInt8]) / serializedBytes() -> [UInt8] (the generic ContiguousBytes API; the fixture is read once into a [UInt8]). A new message value / byte array is created and dropped per iteration (ARC release is part of the iteration).",
+   "JSON: jsonString() / Message(jsonString:) with default options (canonical ProtoJSON: lowerCamelCase, 64-bit ints as strings, enums as names, bytes as base64, defaults omitted).",
+   "Timer: clock_gettime(CLOCK_MONOTONIC) via Glibc.",
+   "Map iteration order of Swift Dictionary is unspecified, so wire_bytes_match may be false for datasets with maps (medium, large); sizes still match.",
+   "build.sh builds the protoc-gen-swift plugin from the same pinned package (harness/Package.resolved) and generates into harness/Sources/bench/gen; SwiftPM scratch dir is build/spm.",
+   "The SwiftPM package lives in harness/ rather than in this directory: SwiftPM derives the root package identity from the directory name, and 'swift-protobuf' collides with the dependency's identity (SwiftPM silently drops the dependency at resolve time and reports a cyclic dependency at build time).",
+   "harness.runtime / library_version are passed to the binary by run.sh from build/runtime.txt (swift --version) and build/version.txt (Package.resolved pin)."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T09:40:01Z",
+  "repeat_index": 1,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

@@ -1,0 +1,753 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "csharp",
+  "name": "google-protobuf",
+  "runtime": ".NET 8.0.33 (X64, workstation GC, 3 cpus)",
+  "library_version": "3.36.2"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 141
+   },
+   "warmup_ns": 3012736433,
+   "steady": true,
+   "batch": 8192,
+   "rounds": [
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1002257490
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1002335659
+    },
+    {
+     "iterations": 2482176,
+     "elapsed_ns": 1002668206
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1001938145
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1001633858
+    },
+    {
+     "iterations": 2482176,
+     "elapsed_ns": 1000931675
+    },
+    {
+     "iterations": 2482176,
+     "elapsed_ns": 1001980989
+    },
+    {
+     "iterations": 2449408,
+     "elapsed_ns": 1003256096
+    },
+    {
+     "iterations": 2465792,
+     "elapsed_ns": 1001963057
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1003243839
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 141
+   },
+   "warmup_ns": 3015545224,
+   "steady": true,
+   "batch": 8192,
+   "rounds": [
+    {
+     "iterations": 1613824,
+     "elapsed_ns": 1003583085
+    },
+    {
+     "iterations": 1605632,
+     "elapsed_ns": 1000081732
+    },
+    {
+     "iterations": 1605632,
+     "elapsed_ns": 1000744836
+    },
+    {
+     "iterations": 1605632,
+     "elapsed_ns": 1002202073
+    },
+    {
+     "iterations": 1597440,
+     "elapsed_ns": 1001413929
+    },
+    {
+     "iterations": 1613824,
+     "elapsed_ns": 1002937151
+    },
+    {
+     "iterations": 1613824,
+     "elapsed_ns": 1002904766
+    },
+    {
+     "iterations": 1605632,
+     "elapsed_ns": 1002019645
+    },
+    {
+     "iterations": 1605632,
+     "elapsed_ns": 1001502260
+    },
+    {
+     "iterations": 1605632,
+     "elapsed_ns": 1001059919
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 141
+   },
+   "warmup_ns": 3003845722,
+   "steady": true,
+   "batch": 512,
+   "rounds": [
+    {
+     "iterations": 243712,
+     "elapsed_ns": 1000674624
+    },
+    {
+     "iterations": 244224,
+     "elapsed_ns": 1000084422
+    },
+    {
+     "iterations": 244736,
+     "elapsed_ns": 1001301543
+    },
+    {
+     "iterations": 243712,
+     "elapsed_ns": 1001098514
+    },
+    {
+     "iterations": 243200,
+     "elapsed_ns": 1000250908
+    },
+    {
+     "iterations": 244224,
+     "elapsed_ns": 1002072688
+    },
+    {
+     "iterations": 245248,
+     "elapsed_ns": 1001056292
+    },
+    {
+     "iterations": 244736,
+     "elapsed_ns": 1002022861
+    },
+    {
+     "iterations": 244224,
+     "elapsed_ns": 1000504466
+    },
+    {
+     "iterations": 245248,
+     "elapsed_ns": 1001858984
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 141
+   },
+   "warmup_ns": 3004406894,
+   "steady": true,
+   "batch": 512,
+   "rounds": [
+    {
+     "iterations": 143360,
+     "elapsed_ns": 1003362159
+    },
+    {
+     "iterations": 145408,
+     "elapsed_ns": 1000252506
+    },
+    {
+     "iterations": 143360,
+     "elapsed_ns": 1001669013
+    },
+    {
+     "iterations": 143872,
+     "elapsed_ns": 1001796123
+    },
+    {
+     "iterations": 143872,
+     "elapsed_ns": 1000867813
+    },
+    {
+     "iterations": 143872,
+     "elapsed_ns": 1000468973
+    },
+    {
+     "iterations": 145408,
+     "elapsed_ns": 1002213324
+    },
+    {
+     "iterations": 143360,
+     "elapsed_ns": 1000161700
+    },
+    {
+     "iterations": 143872,
+     "elapsed_ns": 1000332997
+    },
+    {
+     "iterations": 144384,
+     "elapsed_ns": 1002506859
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 9035
+   },
+   "warmup_ns": 3017114956,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1003067696
+    },
+    {
+     "iterations": 24448,
+     "elapsed_ns": 1002718769
+    },
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1003489821
+    },
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1004225680
+    },
+    {
+     "iterations": 24448,
+     "elapsed_ns": 1003701532
+    },
+    {
+     "iterations": 24448,
+     "elapsed_ns": 1003228544
+    },
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1004483876
+    },
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1004092803
+    },
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1002609938
+    },
+    {
+     "iterations": 24576,
+     "elapsed_ns": 1003316117
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 9035
+   },
+   "warmup_ns": 3018910455,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 19840,
+     "elapsed_ns": 1005871305
+    },
+    {
+     "iterations": 19712,
+     "elapsed_ns": 1002034363
+    },
+    {
+     "iterations": 19712,
+     "elapsed_ns": 1001863556
+    },
+    {
+     "iterations": 19712,
+     "elapsed_ns": 1002791211
+    },
+    {
+     "iterations": 19712,
+     "elapsed_ns": 1000248130
+    },
+    {
+     "iterations": 19584,
+     "elapsed_ns": 1003015427
+    },
+    {
+     "iterations": 19712,
+     "elapsed_ns": 1005739531
+    },
+    {
+     "iterations": 19840,
+     "elapsed_ns": 1005320739
+    },
+    {
+     "iterations": 19840,
+     "elapsed_ns": 1004411518
+    },
+    {
+     "iterations": 19840,
+     "elapsed_ns": 1005135456
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 9035
+   },
+   "warmup_ns": 3046968030,
+   "steady": true,
+   "batch": 64,
+   "rounds": [
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1009682537
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1007998845
+    },
+    {
+     "iterations": 4864,
+     "elapsed_ns": 1001232947
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1009750924
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1011336444
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1010917368
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1010634212
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1010008594
+    },
+    {
+     "iterations": 4928,
+     "elapsed_ns": 1011481444
+    },
+    {
+     "iterations": 4864,
+     "elapsed_ns": 1001793935
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 9035
+   },
+   "warmup_ns": 3025094402,
+   "steady": true,
+   "batch": 32,
+   "rounds": [
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1001352242
+    },
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1000400380
+    },
+    {
+     "iterations": 2720,
+     "elapsed_ns": 1011177415
+    },
+    {
+     "iterations": 2720,
+     "elapsed_ns": 1011469633
+    },
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1000757114
+    },
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1000901614
+    },
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1003970870
+    },
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1002183660
+    },
+    {
+     "iterations": 2688,
+     "elapsed_ns": 1001724634
+    },
+    {
+     "iterations": 2720,
+     "elapsed_ns": 1010807115
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1979535
+   },
+   "warmup_ns": 3036183250,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 119,
+     "elapsed_ns": 1002854865
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1005238305
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1003407119
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1004568202
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1004296369
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1003389164
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1004811274
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1001839195
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1002077283
+    },
+    {
+     "iterations": 119,
+     "elapsed_ns": 1006026023
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1979535
+   },
+   "warmup_ns": 3542501043,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 99,
+     "elapsed_ns": 1006442586
+    },
+    {
+     "iterations": 99,
+     "elapsed_ns": 1011642394
+    },
+    {
+     "iterations": 101,
+     "elapsed_ns": 1004037254
+    },
+    {
+     "iterations": 104,
+     "elapsed_ns": 1008953129
+    },
+    {
+     "iterations": 104,
+     "elapsed_ns": 1005072193
+    },
+    {
+     "iterations": 103,
+     "elapsed_ns": 1011224307
+    },
+    {
+     "iterations": 102,
+     "elapsed_ns": 1007127195
+    },
+    {
+     "iterations": 100,
+     "elapsed_ns": 1003338075
+    },
+    {
+     "iterations": 103,
+     "elapsed_ns": 1000386592
+    },
+    {
+     "iterations": 103,
+     "elapsed_ns": 1002877802
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1979535
+   },
+   "warmup_ns": 3298014555,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 11,
+     "elapsed_ns": 1006166832
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1006432860
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1016214227
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1010650861
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1011584655
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1005580470
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1006651220
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1004787155
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1010192735
+    },
+    {
+     "iterations": 11,
+     "elapsed_ns": 1010654973
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1979535
+   },
+   "warmup_ns": 3476212103,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 7,
+     "elapsed_ns": 1019548543
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1007622492
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1017269231
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1024231255
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1012244405
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1019794820
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1017819697
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1019516610
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1007533283
+    },
+    {
+     "iterations": 7,
+     "elapsed_ns": 1014606925
+    }
+   ]
+  }
+ ],
+ "implementation": {
+  "id": "csharp/google-protobuf",
+  "language": "csharp",
+  "name": "google-protobuf",
+  "variant": null,
+  "version": "3.36.2",
+  "url": "https://github.com/protocolbuffers/protobuf/tree/main/csharp",
+  "notes": [
+   "Official Google.Protobuf runtime (NuGet) with protoc --csharp_out generated code.",
+   "wire_decode = SmallMessage.Parser.ParseFrom(byte[]); wire_encode = msg.ToByteArray().",
+   "json_encode = JsonFormatter.Default.Format(msg); json_decode = JsonParser.Default.Parse<T>(string). The output is canonical ProtoJSON but not compact: JsonFormatter.Default emits a space after ':' and ',', so json_encode writes about 10% more bytes than the compact fixture (141/9035/1979535 vs 126/8283/1750634 for small/medium/large). JsonFormatter/JsonParser are reflection-based (descriptor + IFieldAccessor); Google.Protobuf offers no generated JSON code.",
+   "Built with dotnet build -c Release, workstation (non-server) GC, default TieredPGO, InvariantGlobalization. TargetFramework net8.0 with RollForward=Major so a newer runtime can execute it."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T09:10:06Z",
+  "repeat_index": 1,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

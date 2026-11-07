@@ -1,0 +1,754 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "rust",
+  "name": "prost",
+  "runtime": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "library_version": "0.14.4"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3017628197,
+   "steady": true,
+   "batch": 65536,
+   "rounds": [
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1006172737
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1003816807
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1003593638
+    },
+    {
+     "iterations": 5177344,
+     "elapsed_ns": 1010497655
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1000680935
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1002176660
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1001078324
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1001229707
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1000734465
+    },
+    {
+     "iterations": 5111808,
+     "elapsed_ns": 1002232493
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3040839473,
+   "steady": true,
+   "batch": 65536,
+   "rounds": [
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1008448218
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007781273
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007375357
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007661708
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007674423
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1008070014
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007701840
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007467891
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007928528
+    },
+    {
+     "iterations": 3342336,
+     "elapsed_ns": 1007525330
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3033528504,
+   "steady": true,
+   "batch": 16384,
+   "rounds": [
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1005232864
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1005416990
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1004525038
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1004352762
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1003545962
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1004088394
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1003920776
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1005846894
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1004921835
+    },
+    {
+     "iterations": 1343488,
+     "elapsed_ns": 1003302920
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3020563988,
+   "steady": true,
+   "batch": 4096,
+   "rounds": [
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003428495
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1002427772
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003179432
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1002563026
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003827568
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003816040
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1002957506
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003260657
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003384834
+    },
+    {
+     "iterations": 299008,
+     "elapsed_ns": 1003763449
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3007385380,
+   "steady": true,
+   "batch": 1024,
+   "rounds": [
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1000623632
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1001980412
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1002200191
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1001468182
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1001096891
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1002737968
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1004383544
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1002713449
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1001223316
+    },
+    {
+     "iterations": 71680,
+     "elapsed_ns": 1001078222
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3013656602,
+   "steady": true,
+   "batch": 256,
+   "rounds": [
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1004865856
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1003944187
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1004001270
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1006256453
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1002421752
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1003343877
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1002251873
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1002679505
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1003374700
+    },
+    {
+     "iterations": 20480,
+     "elapsed_ns": 1001815473
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3058588857,
+   "steady": true,
+   "batch": 256,
+   "rounds": [
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1009077633
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1007010774
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1010508354
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1008772560
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1006632053
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1006435243
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1006084469
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1007168118
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1005560623
+    },
+    {
+     "iterations": 23296,
+     "elapsed_ns": 1006348202
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3047485344,
+   "steady": true,
+   "batch": 64,
+   "rounds": [
+    {
+     "iterations": 6016,
+     "elapsed_ns": 1004206246
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1004395529
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1004083309
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1002803864
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1005690854
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1007043901
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1009157733
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1004803582
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1003222534
+    },
+    {
+     "iterations": 6080,
+     "elapsed_ns": 1005475103
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3007553804,
+   "steady": true,
+   "batch": 4,
+   "rounds": [
+    {
+     "iterations": 292,
+     "elapsed_ns": 1011152394
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1002708107
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1007301627
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1003813059
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1000410972
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1000830278
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1000511950
+    },
+    {
+     "iterations": 292,
+     "elapsed_ns": 1012848708
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1007609781
+    },
+    {
+     "iterations": 288,
+     "elapsed_ns": 1001749428
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3020991481,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 196,
+     "elapsed_ns": 1008867585
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1006927660
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1006584615
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1007844699
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1008305842
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1007617257
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1007238702
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1006641726
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1006949663
+    },
+    {
+     "iterations": 196,
+     "elapsed_ns": 1007187159
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3069014187,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 63,
+     "elapsed_ns": 1002254891
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1006153833
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1004429356
+    },
+    {
+     "iterations": 64,
+     "elapsed_ns": 1015467191
+    },
+    {
+     "iterations": 64,
+     "elapsed_ns": 1013175366
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1004139945
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1003907957
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1004336272
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1003208270
+    },
+    {
+     "iterations": 63,
+     "elapsed_ns": 1002299749
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3188415854,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 10,
+     "elapsed_ns": 1062760910
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1061168410
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1061504414
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1062705172
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1061883220
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1062788266
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1061846093
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1061691064
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1065555581
+    },
+    {
+     "iterations": 10,
+     "elapsed_ns": 1062157419
+    }
+   ]
+  }
+ ],
+ "implementation": {
+  "id": "rust/prost",
+  "language": "rust",
+  "name": "prost",
+  "variant": null,
+  "version": "0.14.4",
+  "url": "https://github.com/tokio-rs/prost",
+  "notes": [
+   "prost with prost-build generated structs (default settings: HashMap maps, Vec<u8> bytes, String strings).",
+   "Wire: Message::decode(&[u8]) / Message::encode_to_vec() allocate a new message / Vec per iteration.",
+   "prost has no JSON support itself; JSON uses pbjson + pbjson-build generated serde impls (canonical ProtoJSON: lowerCamelCase, 64-bit ints as strings, enums as names, bytes as base64, defaults omitted) driven by serde_json::to_string / serde_json::from_str.",
+   "Map iteration order of HashMap is unspecified, so wire_bytes_match may be false for datasets with maps (medium, large); sizes still match.",
+   "Build: cargo build --release --locked with the default release profile (no LTO / PGO / target-cpu)."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T08:42:19Z",
+  "repeat_index": 0,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

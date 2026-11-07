@@ -1,0 +1,472 @@
+{
+ "c-nanopb": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true
+  }
+ },
+ "c-protobuf-c": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true
+  }
+ },
+ "cpp-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1749962,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "csharp-google-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 141,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 9035,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1979535,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "csharp-protobuf-net": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true
+  }
+ },
+ "go-protobuf-go": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1749962,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "go-vtprotobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1749962,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "goose-goose-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true
+  }
+ },
+ "java-protobuf-java": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8283,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1750634,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "java-wire": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8283,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1750634,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "js-protobuf-es": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "js-protobufjs": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "python-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 139,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8865,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1950193,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "rust-prost": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8283,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1750634,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "rust-rust-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 139,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8865,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1950193,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "swift-swift-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8283,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 1750634,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "zig-zig-protobuf": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "zig-zig-protobuf-arena": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "zig-zig-protobuf-arena-native": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "zig-zig-protobuf-fba": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "zig-zig-protobuf-fba-native": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ },
+ "zig-zig-protobuf-native": {
+  "small": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 126,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "medium": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 8281,
+   "json_equal": true,
+   "json_canonical": true
+  },
+  "large": {
+   "wire_size_match": true,
+   "wire_equal": true,
+   "json_bytes": 2072643,
+   "json_equal": true,
+   "json_canonical": true
+  }
+ }
+}

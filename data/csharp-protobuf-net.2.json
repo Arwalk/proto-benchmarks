@@ -1,0 +1,449 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "csharp",
+  "name": "protobuf-net",
+  "runtime": ".NET 8.0.33 (X64, workstation GC, 3 cpus)",
+  "library_version": "3.4.30"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3013731384,
+   "steady": true,
+   "batch": 4096,
+   "rounds": [
+    {
+     "iterations": 827392,
+     "elapsed_ns": 1002537426
+    },
+    {
+     "iterations": 839680,
+     "elapsed_ns": 1002010773
+    },
+    {
+     "iterations": 839680,
+     "elapsed_ns": 1001931863
+    },
+    {
+     "iterations": 839680,
+     "elapsed_ns": 1004733061
+    },
+    {
+     "iterations": 835584,
+     "elapsed_ns": 1004777993
+    },
+    {
+     "iterations": 827392,
+     "elapsed_ns": 1003388259
+    },
+    {
+     "iterations": 827392,
+     "elapsed_ns": 1000495912
+    },
+    {
+     "iterations": 835584,
+     "elapsed_ns": 1000618645
+    },
+    {
+     "iterations": 839680,
+     "elapsed_ns": 1003012316
+    },
+    {
+     "iterations": 835584,
+     "elapsed_ns": 1004989009
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3014938878,
+   "steady": true,
+   "batch": 4096,
+   "rounds": [
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1000502329
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1002691244
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1001336316
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1000432136
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1001876251
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1000882245
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1003263047
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1000491432
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1001467907
+    },
+    {
+     "iterations": 798720,
+     "elapsed_ns": 1001624196
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "protobuf-net has no canonical ProtoJSON support"
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "protobuf-net has no canonical ProtoJSON support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3028188077,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1006290722
+    },
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1006360186
+    },
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1000733998
+    },
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1004288707
+    },
+    {
+     "iterations": 15488,
+     "elapsed_ns": 1008058027
+    },
+    {
+     "iterations": 15488,
+     "elapsed_ns": 1008193740
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1007136384
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1007504903
+    },
+    {
+     "iterations": 15488,
+     "elapsed_ns": 1003791834
+    },
+    {
+     "iterations": 15488,
+     "elapsed_ns": 1001580611
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3023484039,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1003969065
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1001889279
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1000441175
+    },
+    {
+     "iterations": 11136,
+     "elapsed_ns": 1010045312
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1000117072
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1003727997
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1002189131
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1004743868
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1005934589
+    },
+    {
+     "iterations": 11008,
+     "elapsed_ns": 1006577157
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "protobuf-net has no canonical ProtoJSON support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "protobuf-net has no canonical ProtoJSON support"
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3023983207,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 80,
+     "elapsed_ns": 1001930204
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1011058968
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1011225929
+    },
+    {
+     "iterations": 80,
+     "elapsed_ns": 1007734123
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1006410815
+    },
+    {
+     "iterations": 82,
+     "elapsed_ns": 1000593881
+    },
+    {
+     "iterations": 82,
+     "elapsed_ns": 1004816526
+    },
+    {
+     "iterations": 83,
+     "elapsed_ns": 1007644128
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1002428593
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1005630779
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3032343658,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 96,
+     "elapsed_ns": 1004575441
+    },
+    {
+     "iterations": 97,
+     "elapsed_ns": 1007625629
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1005645927
+    },
+    {
+     "iterations": 95,
+     "elapsed_ns": 1000683725
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1007393425
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1002681118
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1008373878
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1004519128
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1001936177
+    },
+    {
+     "iterations": 96,
+     "elapsed_ns": 1004146638
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "protobuf-net has no canonical ProtoJSON support"
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "protobuf-net has no canonical ProtoJSON support"
+  }
+ ],
+ "implementation": {
+  "id": "csharp/protobuf-net",
+  "language": "csharp",
+  "name": "protobuf-net",
+  "variant": null,
+  "version": "3.4.30",
+  "url": "https://github.com/protobuf-net/protobuf-net",
+  "notes": [
+   "Contract classes generated from bench.proto with protobuf-net's own generator (protobuf-net.Protogen dotnet tool, default options). Generated contracts use packed arrays, ZigZag/FixedSize DataFormat, ProtoMap and a DiscriminatedUnion for the oneof; wire output is byte-identical to the fixtures.",
+   "wire_decode = Serializer.Deserialize<T>(ReadOnlyMemory<byte>) (allocates a new object graph per iteration).",
+   "wire_encode = new MemoryStream(); Serializer.Serialize(ms, msg); ms.ToArray() -- the common user pattern; this includes one extra copy (MemoryStream growth + ToArray) compared to Serializer.Measure/IBufferWriter, which is what users typically pay.",
+   "json_encode/json_decode unsupported: protobuf-net has no canonical ProtoJSON support (its contracts can be fed to System.Text.Json/Newtonsoft, but that is not the ProtoJSON mapping).",
+   "protobuf-net compiles its serializers at first use (RuntimeTypeModel auto-compile); this happens during calibration/warm-up, not in the timed rounds.",
+   "Built with dotnet build -c Release, workstation (non-server) GC, default TieredPGO, InvariantGlobalization. TargetFramework net8.0 with RollForward=Major so a newer runtime can execute it."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T10:03:49Z",
+  "repeat_index": 2,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

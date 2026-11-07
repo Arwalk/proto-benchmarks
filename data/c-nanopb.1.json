@@ -1,0 +1,450 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "c",
+  "name": "nanopb",
+  "runtime": "gcc 13.3.0",
+  "library_version": "0.4.9.2"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3018412982,
+   "steady": true,
+   "batch": 8192,
+   "rounds": [
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1006531282
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1007556217
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1007842300
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1008062191
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1006690893
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1007545883
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1006895643
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1007652568
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1008210232
+    },
+    {
+     "iterations": 606208,
+     "elapsed_ns": 1006258614
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3067415973,
+   "steady": true,
+   "batch": 8192,
+   "rounds": [
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1009387320
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1008852759
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1008843556
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1008568649
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1011238435
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1010333336
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1008579233
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1009379428
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1010212202
+    },
+    {
+     "iterations": 598016,
+     "elapsed_ns": 1013267844
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "nanopb has no JSON support"
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "nanopb has no JSON support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3055513019,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1000507305
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1004726298
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1002399124
+    },
+    {
+     "iterations": 7680,
+     "elapsed_ns": 1016511797
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1002787281
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1006505345
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1004605123
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1001949009
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1003136335
+    },
+    {
+     "iterations": 7552,
+     "elapsed_ns": 1002693672
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3006418942,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1001561367
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1001499132
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1000965906
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1001796265
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1003159798
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1001944256
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1001920474
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1001186765
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1002697137
+    },
+    {
+     "iterations": 9472,
+     "elapsed_ns": 1005182195
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "nanopb has no JSON support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "nanopb has no JSON support"
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3014293502,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 38,
+     "elapsed_ns": 1004838150
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1006850988
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1004922311
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1004600355
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1004685152
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1004659218
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1005301266
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1004083938
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1005146410
+    },
+    {
+     "iterations": 38,
+     "elapsed_ns": 1006180134
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3131417791,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 43,
+     "elapsed_ns": 1020161763
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1020347912
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1019625406
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1020793181
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1019549600
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1019429120
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1019814036
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1019631727
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1020000398
+    },
+    {
+     "iterations": 43,
+     "elapsed_ns": 1019676330
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "nanopb has no JSON support"
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "nanopb has no JSON support"
+  }
+ ],
+ "implementation": {
+  "id": "c/nanopb",
+  "language": "c",
+  "name": "nanopb",
+  "variant": "malloc",
+  "version": "0.4.9.2",
+  "url": "https://github.com/nanopb/nanopb",
+  "notes": [
+   "nanopb 0.4.9.2 runtime (pb_common.c, pb_encode.c, pb_decode.c) compiled from the pinned release tarball together with the generated bench.pb.c; code generated by the bundled nanopb_generator.py. The generator compiles bench.proto with the protoc bundled in grpcio-tools (libprotoc 35.1), not with $PROTOC 36.2: it offers no option to select a protoc binary. It consumes only the FileDescriptorSet, which is identical for this proto3 file.",
+   "Dynamic allocation mode: compiled with PB_ENABLE_MALLOC and every string/bytes/repeated field (including the repeated map-entry fields that represent map<K,V>) is declared type:FT_POINTER in bench.options, so decoding malloc()s/realloc()s like the other libraries and no array size is hard-coded. nanopb's embedded default (static fixed-size fields or callbacks) is not benchmarked.",
+   "Compiled with PB_FIELD_32BIT because the 16-bit default pb_size_t (max 65535) cannot hold the 64 KiB (65536 B) bytes blob of the large dataset.",
+   "wire_decode: pb_decode from pb_istream_from_buffer into a stack struct followed by pb_release inside the timed iteration.",
+   "wire_encode: pb_get_encoded_size (a sizing pass) + malloc + pb_encode into pb_ostream_from_buffer + free per iteration.",
+   "JSON operations are unsupported: nanopb has no JSON (ProtoJSON) support.",
+   "Maps are represented as repeated entry messages, so re-encoding preserves the fixture entry order and the output is byte-identical to the fixture."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T09:57:10Z",
+  "repeat_index": 1,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

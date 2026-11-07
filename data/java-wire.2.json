@@ -1,0 +1,756 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "java",
+  "name": "wire",
+  "runtime": "OpenJDK 64-Bit Server VM 21.0.12.1+1-1-24.04.4-Ubuntu (G1 Young Generation/G1 Concurrent GC/G1 Old Generation, 3 cpus)",
+  "library_version": "5.5.1"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 4501467855,
+   "steady": true,
+   "batch": 256,
+   "rounds": [
+    {
+     "iterations": 1358592,
+     "elapsed_ns": 1000183339
+    },
+    {
+     "iterations": 1363968,
+     "elapsed_ns": 1000033376
+    },
+    {
+     "iterations": 1358592,
+     "elapsed_ns": 1000173865
+    },
+    {
+     "iterations": 1358336,
+     "elapsed_ns": 1000119255
+    },
+    {
+     "iterations": 1358080,
+     "elapsed_ns": 1000178477
+    },
+    {
+     "iterations": 1359872,
+     "elapsed_ns": 1000101341
+    },
+    {
+     "iterations": 1361152,
+     "elapsed_ns": 1000119587
+    },
+    {
+     "iterations": 1357824,
+     "elapsed_ns": 1000022261
+    },
+    {
+     "iterations": 1363712,
+     "elapsed_ns": 1000054015
+    },
+    {
+     "iterations": 1365248,
+     "elapsed_ns": 1000176236
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3000915288,
+   "steady": true,
+   "batch": 512,
+   "rounds": [
+    {
+     "iterations": 2096640,
+     "elapsed_ns": 1000225035
+    },
+    {
+     "iterations": 2088960,
+     "elapsed_ns": 1000023371
+    },
+    {
+     "iterations": 2089984,
+     "elapsed_ns": 1000165467
+    },
+    {
+     "iterations": 2084352,
+     "elapsed_ns": 1000175495
+    },
+    {
+     "iterations": 2090496,
+     "elapsed_ns": 1000212843
+    },
+    {
+     "iterations": 2092544,
+     "elapsed_ns": 1000061798
+    },
+    {
+     "iterations": 2081792,
+     "elapsed_ns": 1000211429
+    },
+    {
+     "iterations": 2096640,
+     "elapsed_ns": 1000184964
+    },
+    {
+     "iterations": 2084352,
+     "elapsed_ns": 1000026574
+    },
+    {
+     "iterations": 2094592,
+     "elapsed_ns": 1000134600
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3000699465,
+   "steady": true,
+   "batch": 64,
+   "rounds": [
+    {
+     "iterations": 305920,
+     "elapsed_ns": 1000051504
+    },
+    {
+     "iterations": 304704,
+     "elapsed_ns": 1000206223
+    },
+    {
+     "iterations": 306176,
+     "elapsed_ns": 1000047432
+    },
+    {
+     "iterations": 305024,
+     "elapsed_ns": 1000012901
+    },
+    {
+     "iterations": 306240,
+     "elapsed_ns": 1000130437
+    },
+    {
+     "iterations": 304960,
+     "elapsed_ns": 1000139175
+    },
+    {
+     "iterations": 305792,
+     "elapsed_ns": 1000081191
+    },
+    {
+     "iterations": 305216,
+     "elapsed_ns": 1000163805
+    },
+    {
+     "iterations": 305664,
+     "elapsed_ns": 1000044793
+    },
+    {
+     "iterations": 305152,
+     "elapsed_ns": 1000027860
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3000645249,
+   "steady": true,
+   "batch": 64,
+   "rounds": [
+    {
+     "iterations": 211008,
+     "elapsed_ns": 1000048404
+    },
+    {
+     "iterations": 210176,
+     "elapsed_ns": 1000241869
+    },
+    {
+     "iterations": 210624,
+     "elapsed_ns": 1000055768
+    },
+    {
+     "iterations": 210880,
+     "elapsed_ns": 1000037715
+    },
+    {
+     "iterations": 210240,
+     "elapsed_ns": 1000268952
+    },
+    {
+     "iterations": 210816,
+     "elapsed_ns": 1000201175
+    },
+    {
+     "iterations": 210688,
+     "elapsed_ns": 1000197019
+    },
+    {
+     "iterations": 210176,
+     "elapsed_ns": 1000004021
+    },
+    {
+     "iterations": 210816,
+     "elapsed_ns": 1000087140
+    },
+    {
+     "iterations": 210304,
+     "elapsed_ns": 1000249070
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3004500976,
+   "steady": true,
+   "batch": 32,
+   "rounds": [
+    {
+     "iterations": 31264,
+     "elapsed_ns": 1000440700
+    },
+    {
+     "iterations": 31168,
+     "elapsed_ns": 1000292510
+    },
+    {
+     "iterations": 31296,
+     "elapsed_ns": 1000497647
+    },
+    {
+     "iterations": 31104,
+     "elapsed_ns": 1000919980
+    },
+    {
+     "iterations": 31232,
+     "elapsed_ns": 1000425408
+    },
+    {
+     "iterations": 31200,
+     "elapsed_ns": 1000654565
+    },
+    {
+     "iterations": 31232,
+     "elapsed_ns": 1000128352
+    },
+    {
+     "iterations": 31168,
+     "elapsed_ns": 1000883107
+    },
+    {
+     "iterations": 31392,
+     "elapsed_ns": 1000994048
+    },
+    {
+     "iterations": 31264,
+     "elapsed_ns": 1000535112
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 4002754762,
+   "steady": true,
+   "batch": 16,
+   "rounds": [
+    {
+     "iterations": 19648,
+     "elapsed_ns": 1000806716
+    },
+    {
+     "iterations": 19600,
+     "elapsed_ns": 1000374240
+    },
+    {
+     "iterations": 19648,
+     "elapsed_ns": 1000342305
+    },
+    {
+     "iterations": 19648,
+     "elapsed_ns": 1000382028
+    },
+    {
+     "iterations": 19696,
+     "elapsed_ns": 1000441267
+    },
+    {
+     "iterations": 19616,
+     "elapsed_ns": 1000595583
+    },
+    {
+     "iterations": 19696,
+     "elapsed_ns": 1000594993
+    },
+    {
+     "iterations": 19664,
+     "elapsed_ns": 1000531567
+    },
+    {
+     "iterations": 19600,
+     "elapsed_ns": 1000068009
+    },
+    {
+     "iterations": 19664,
+     "elapsed_ns": 1000754646
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3005199465,
+   "steady": true,
+   "batch": 8,
+   "rounds": [
+    {
+     "iterations": 5872,
+     "elapsed_ns": 1000579224
+    },
+    {
+     "iterations": 5872,
+     "elapsed_ns": 1000503830
+    },
+    {
+     "iterations": 5880,
+     "elapsed_ns": 1001260524
+    },
+    {
+     "iterations": 5880,
+     "elapsed_ns": 1000446576
+    },
+    {
+     "iterations": 5888,
+     "elapsed_ns": 1000537388
+    },
+    {
+     "iterations": 5872,
+     "elapsed_ns": 1001100990
+    },
+    {
+     "iterations": 5896,
+     "elapsed_ns": 1001238257
+    },
+    {
+     "iterations": 5888,
+     "elapsed_ns": 1000440112
+    },
+    {
+     "iterations": 5856,
+     "elapsed_ns": 1000302510
+    },
+    {
+     "iterations": 5864,
+     "elapsed_ns": 1000439985
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8283
+   },
+   "warmup_ns": 3002572394,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 4010,
+     "elapsed_ns": 1000216409
+    },
+    {
+     "iterations": 4016,
+     "elapsed_ns": 1000087038
+    },
+    {
+     "iterations": 4020,
+     "elapsed_ns": 1000087685
+    },
+    {
+     "iterations": 4010,
+     "elapsed_ns": 1000299971
+    },
+    {
+     "iterations": 4020,
+     "elapsed_ns": 1000492093
+    },
+    {
+     "iterations": 4006,
+     "elapsed_ns": 1000442130
+    },
+    {
+     "iterations": 4004,
+     "elapsed_ns": 1000432888
+    },
+    {
+     "iterations": 4020,
+     "elapsed_ns": 1000081163
+    },
+    {
+     "iterations": 4022,
+     "elapsed_ns": 1000334021
+    },
+    {
+     "iterations": 4014,
+     "elapsed_ns": 1000404139
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3025979275,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 108,
+     "elapsed_ns": 1005534155
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1007737859
+    },
+    {
+     "iterations": 107,
+     "elapsed_ns": 1005337164
+    },
+    {
+     "iterations": 104,
+     "elapsed_ns": 1002068601
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1000787510
+    },
+    {
+     "iterations": 107,
+     "elapsed_ns": 1002299511
+    },
+    {
+     "iterations": 107,
+     "elapsed_ns": 1008396555
+    },
+    {
+     "iterations": 106,
+     "elapsed_ns": 1006783856
+    },
+    {
+     "iterations": 107,
+     "elapsed_ns": 1008748274
+    },
+    {
+     "iterations": 109,
+     "elapsed_ns": 1006739832
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3570150904,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 80,
+     "elapsed_ns": 1005478825
+    },
+    {
+     "iterations": 79,
+     "elapsed_ns": 1002962254
+    },
+    {
+     "iterations": 80,
+     "elapsed_ns": 1005324836
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1008734722
+    },
+    {
+     "iterations": 80,
+     "elapsed_ns": 1011563987
+    },
+    {
+     "iterations": 80,
+     "elapsed_ns": 1007026235
+    },
+    {
+     "iterations": 78,
+     "elapsed_ns": 1006455858
+    },
+    {
+     "iterations": 68,
+     "elapsed_ns": 1003988419
+    },
+    {
+     "iterations": 80,
+     "elapsed_ns": 1007737124
+    },
+    {
+     "iterations": 81,
+     "elapsed_ns": 1006377466
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3126507773,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 20,
+     "elapsed_ns": 1037073449
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1036877690
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1032339080
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1037743549
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1036145622
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1031618959
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1034696144
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1032051583
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1036714782
+    },
+    {
+     "iterations": 20,
+     "elapsed_ns": 1034331990
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 1750634
+   },
+   "warmup_ns": 3411418923,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 13,
+     "elapsed_ns": 1076929107
+    },
+    {
+     "iterations": 13,
+     "elapsed_ns": 1077974305
+    },
+    {
+     "iterations": 13,
+     "elapsed_ns": 1079316165
+    },
+    {
+     "iterations": 13,
+     "elapsed_ns": 1075653900
+    },
+    {
+     "iterations": 13,
+     "elapsed_ns": 1075811127
+    },
+    {
+     "iterations": 12,
+     "elapsed_ns": 1003693437
+    },
+    {
+     "iterations": 12,
+     "elapsed_ns": 1000997561
+    },
+    {
+     "iterations": 13,
+     "elapsed_ns": 1077850486
+    },
+    {
+     "iterations": 12,
+     "elapsed_ns": 1001129141
+    },
+    {
+     "iterations": 13,
+     "elapsed_ns": 1076777116
+    }
+   ]
+  }
+ ],
+ "implementation": {
+  "id": "java/wire",
+  "language": "java",
+  "name": "wire",
+  "variant": null,
+  "version": "5.5.1",
+  "url": "https://github.com/square/wire",
+  "notes": [
+   "Square Wire with Java code generation (wire-compiler --java_out; the wire-maven-plugin only exists for Wire 3.x, so build.sh fetches the pinned wire-compiler jar-with-dependencies from Maven Central and runs it). Runtime: com.squareup.wire:wire-runtime-jvm (Kotlin runtime, Java generated classes).",
+   "Generated classes are immutable with public final fields and a Builder; repeated fields are java.util.List, maps are java.util.Map, bytes are okio.ByteString; proto3 singular scalars are primitives (OMIT_IDENTITY).",
+   "wire_decode = SmallMessage.ADAPTER.decode(byte[]); wire_encode = SmallMessage.ADAPTER.encode(msg) (returns a new byte[]). A new message / byte[] is allocated per iteration. ADAPTER.encode(msg) writes into an okio Buffer and copies it out with readByteArray(); ADAPTER.decode(byte[]) wraps the input in a Buffer first, so each wire op pays one extra copy of the payload compared with libraries that write straight into a byte[].",
+   "JSON via wire-moshi-adapter: Moshi.Builder().add(new WireJsonAdapterFactory()).build() and moshi.adapter(SmallMessage.class) created once and reused; json_encode = adapter.toJson(msg), json_decode = adapter.fromJson(text). Output verified to be the canonical proto3 JSON mapping (lowerCamelCase keys, 64-bit ints as strings, enums as names, bytes as base64, defaults omitted) and semantically identical to the fixture JSON for all three datasets.",
+   "wire_bytes_match is false for the medium dataset only because Wire emits oneof members after all other fields (card_token, tag 7, is written after fixed64 checksum, tag 15); the output has identical length and content, just a different field order, and the JSON round-trip check passes on length.",
+   "Default HotSpot JIT flags (no -XX tuning). Timer: System.nanoTime(). Black hole: static volatile long xor-folded every iteration.",
+   "Build: Maven, release 21; runtime jars are resolved by Maven and listed in build/classpath.txt. The library version is read from pom.xml into build/version.txt and passed to the harness as a system property (Wire has no runtime version API)."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T10:16:00Z",
+  "repeat_index": 2,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

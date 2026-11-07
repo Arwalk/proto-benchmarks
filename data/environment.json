@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+    "protoc": "libprotoc 36.2",
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "cmake": "cmake version 3.28.3",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "go": "go version go1.26.0 linux/amd64",
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+    "mvn": "Apache Maven 3.8.7",
+    "python3": "Python 3.12.3",
+    "dotnet": "8.0.133",
+    "node": "v22.22.1",
+    "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+    "zig": "0.17.1",
+    "goose": "goose runtime 4d3da949e563"
+  }
+}

@@ -1,0 +1,449 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "c",
+  "name": "protobuf-c",
+  "runtime": "gcc 13.3.0",
+  "library_version": "1.4.1"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3046308579,
+   "steady": true,
+   "batch": 32768,
+   "rounds": [
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012854989
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012027387
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012598885
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012171849
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012498367
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012185047
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012398349
+    },
+    {
+     "iterations": 2457600,
+     "elapsed_ns": 1000049523
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1012527381
+    },
+    {
+     "iterations": 2490368,
+     "elapsed_ns": 1013031970
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3014804819,
+   "steady": true,
+   "batch": 16384,
+   "rounds": [
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1003423279
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1004623557
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1006708536
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1004442296
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1004097186
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1003958459
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1003946877
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1005678778
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1003387044
+    },
+    {
+     "iterations": 1572864,
+     "elapsed_ns": 1003520040
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "protobuf-c has no JSON support"
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "protobuf-c has no JSON support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3050658534,
+   "steady": true,
+   "batch": 512,
+   "rounds": [
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1003315005
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1004044666
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1007424411
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1003557832
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1006840826
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1004659926
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1002938015
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1006098977
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1002260884
+    },
+    {
+     "iterations": 41472,
+     "elapsed_ns": 1005341678
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3012113505,
+   "steady": true,
+   "batch": 256,
+   "rounds": [
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1004260969
+    },
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1004447771
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1015380407
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1013538979
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1014106732
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1013979027
+    },
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1001067194
+    },
+    {
+     "iterations": 15360,
+     "elapsed_ns": 1000466655
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1012785470
+    },
+    {
+     "iterations": 15616,
+     "elapsed_ns": 1013975553
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "protobuf-c has no JSON support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "protobuf-c has no JSON support"
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3045383997,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 206,
+     "elapsed_ns": 1002591179
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1001923879
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1002618026
+    },
+    {
+     "iterations": 208,
+     "elapsed_ns": 1009569521
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1007492252
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1006187767
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1007198379
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1005671459
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1002204516
+    },
+    {
+     "iterations": 206,
+     "elapsed_ns": 1003345724
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3049696502,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 105,
+     "elapsed_ns": 1006868882
+    },
+    {
+     "iterations": 104,
+     "elapsed_ns": 1000207399
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1007599450
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1007422059
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1007057824
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1009063402
+    },
+    {
+     "iterations": 104,
+     "elapsed_ns": 1001493922
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1008623916
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1006328007
+    },
+    {
+     "iterations": 105,
+     "elapsed_ns": 1007795273
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "protobuf-c has no JSON support"
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "protobuf-c has no JSON support"
+  }
+ ],
+ "implementation": {
+  "id": "c/protobuf-c",
+  "language": "c",
+  "name": "protobuf-c",
+  "variant": null,
+  "version": "1.4.1",
+  "url": "https://github.com/protobuf-c/protobuf-c",
+  "notes": [
+   "Generated code from protoc-gen-c; runtime libprotobuf-c linked via pkg-config. The distribution packages are used (1.4.x on the Ubuntu 24.04 Docker image) because protobuf-c 1.5.2 protoc-gen-c does not compile against libprotobuf >= 30; the generated code and C runtime are unaffected by the libprotobuf version.",
+   "The pack/unpack hot path lives in the distribution's libprotobuf-c shared library, compiled by Ubuntu with -O2 -fstack-protector-strong -D_FORTIFY_SOURCE=3; only bench.c and the generated descriptor tables are compiled with -O3 by this harness. The other C/C++ runtimes in the suite are built from source with -O3.",
+   "wire_decode: <msg>__unpack(NULL, len, data) with the default system allocator, followed by <msg>__free_unpacked inside the timed iteration.",
+   "wire_encode: <msg>__get_packed_size + malloc + <msg>__pack + free per iteration (protobuf-c has no sizing-free serialise API).",
+   "JSON operations are unsupported: protobuf-c has no JSON (ProtoJSON) support.",
+   "Maps are represented as repeated entry messages, so re-encoding preserves the fixture entry order and the output is byte-identical to the fixture."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T09:04:47Z",
+  "repeat_index": 1,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

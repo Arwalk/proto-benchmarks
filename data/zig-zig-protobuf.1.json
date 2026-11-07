@@ -1,0 +1,759 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "zig",
+  "name": "zig-protobuf",
+  "runtime": "Zig 0.17.1 (fast, cpu x86_64 = baseline, std.heap.smp_allocator)",
+  "library_version": "7.0.0 (git 8033e1e)"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3026132596,
+   "steady": true,
+   "batch": 65536,
+   "rounds": [
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1004671432
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1015449579
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1004666050
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1005289743
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1006168284
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1004714406
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1004981232
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1010497875
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1005482051
+    },
+    {
+     "iterations": 3866624,
+     "elapsed_ns": 1005505365
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3015444423,
+   "steady": true,
+   "batch": 32768,
+   "rounds": [
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1009295062
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1009820357
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1009317404
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1008925843
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1009305110
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1010181138
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1008946563
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1010120476
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1009994046
+    },
+    {
+     "iterations": 3080192,
+     "elapsed_ns": 1009762645
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3018721952,
+   "steady": true,
+   "batch": 8192,
+   "rounds": [
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1003550377
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1003227188
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1003487688
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1003632995
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1004274930
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1003872893
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1003009083
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1004484352
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1004027920
+    },
+    {
+     "iterations": 720896,
+     "elapsed_ns": 1004435884
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 126,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 126
+   },
+   "warmup_ns": 3088188167,
+   "steady": true,
+   "batch": 8192,
+   "rounds": [
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1012792764
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1013972090
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1012513153
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1011761927
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1016316655
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1013163166
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1014110622
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1012034283
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1011767714
+    },
+    {
+     "iterations": 417792,
+     "elapsed_ns": 1013205290
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8281
+   },
+   "warmup_ns": 3015272892,
+   "steady": true,
+   "batch": 512,
+   "rounds": [
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1004985123
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1005646427
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1003857073
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1004930239
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1002787440
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1003453891
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1002612570
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1003247168
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1003387724
+    },
+    {
+     "iterations": 50176,
+     "elapsed_ns": 1003038896
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8281
+   },
+   "warmup_ns": 3068681960,
+   "steady": true,
+   "batch": 512,
+   "rounds": [
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1017242199
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1015305919
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1016085536
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1015042806
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1012991589
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1013463505
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1014721903
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1013295989
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1013504163
+    },
+    {
+     "iterations": 29184,
+     "elapsed_ns": 1015290179
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8281
+   },
+   "warmup_ns": 3011213849,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 12928,
+     "elapsed_ns": 1008726021
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1000024398
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1003855954
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1003081501
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1000255859
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1002887264
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1003317486
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1001010669
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1002494316
+    },
+    {
+     "iterations": 12800,
+     "elapsed_ns": 1000208890
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 8283,
+   "validation": {
+    "wire_bytes_match": false,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 8281
+   },
+   "warmup_ns": 3040943200,
+   "steady": true,
+   "batch": 128,
+   "rounds": [
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1015526907
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1010265756
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1013416055
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1013171591
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1014668510
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1013883733
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1013151794
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1014903127
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1011293859
+    },
+    {
+     "iterations": 6912,
+     "elapsed_ns": 1014910388
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 2072643
+   },
+   "warmup_ns": 3063498300,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 138,
+     "elapsed_ns": 1010128949
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1010640062
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1010929947
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1011795596
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1010703232
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1011692282
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1011189131
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1014639396
+    },
+    {
+     "iterations": 136,
+     "elapsed_ns": 1000154442
+    },
+    {
+     "iterations": 138,
+     "elapsed_ns": 1011073507
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 2072643
+   },
+   "warmup_ns": 3009864803,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 156,
+     "elapsed_ns": 1002538673
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1000804001
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1001152147
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1000366925
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1000435508
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1000793243
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1000472777
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1002065032
+    },
+    {
+     "iterations": 158,
+     "elapsed_ns": 1012760690
+    },
+    {
+     "iterations": 156,
+     "elapsed_ns": 1000343321
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 2072643
+   },
+   "warmup_ns": 3017585917,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 34,
+     "elapsed_ns": 1004637889
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1004757886
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1004850645
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1004581059
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1007877544
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1004164187
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1004937000
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1003835961
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1005757486
+    },
+    {
+     "iterations": 34,
+     "elapsed_ns": 1005602780
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": true,
+   "payload_bytes": 1750634,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": true,
+    "json_bytes": 2072643
+   },
+   "warmup_ns": 3251908982,
+   "steady": true,
+   "batch": 1,
+   "rounds": [
+    {
+     "iterations": 23,
+     "elapsed_ns": 1041025317
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1039772219
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1039259241
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1040460327
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1039062219
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1038622416
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1038611944
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1037524992
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1038475545
+    },
+    {
+     "iterations": 23,
+     "elapsed_ns": 1038925279
+    }
+   ]
+  }
+ ],
+ "implementation": {
+  "id": "zig/zig-protobuf",
+  "language": "zig",
+  "name": "zig-protobuf",
+  "variant": null,
+  "version": "7.0.0 (git 8033e1e)",
+  "url": "https://github.com/Arwalk/zig-protobuf",
+  "notes": [
+   "zig-protobuf 7.0.0 at commit 8033e1e (pinned; override with ZIG_PROTOBUF_REF) with protoc-gen-zig generated structs; built with zig build -Doptimize=ReleaseFast -Dcpu=baseline (generic x86-64, matching the other compilers' default targets; Zig would otherwise target the host CPU), no libc.",
+   "Allocator: std.heap.smp_allocator (Zig's general purpose allocator for release builds). Every iteration allocates a new message / buffer from it and frees it (msg.deinit, Writer.Allocating.deinit, allocator.free) inside the timed loop; no arena, no reuse.",
+   "wire_decode: Msg.decode(&std.Io.Reader.fixed(bytes), allocator); wire_encode: msg.encode(&std.Io.Writer.Allocating, allocator).",
+   "wire_encode: the library's writeSubmessage encodes every nested message into a temporary Allocating writer and then copies it into the parent (one alloc + copy + free per submessage; about 15k on large). Much of the gpa column's wire_encode cost is this allocator traffic, which is why the arena/fba variants gain most there.",
+   "json_encode: msg.jsonEncode(.{}, .{ .emit_oneof_field_name = false }, allocator). The library default emit_oneof_field_name=true wraps oneof members in an object named after the oneof (a legacy, non-ProtoJSON format), so it is turned off for the canonical mapping.",
+   "json_decode: Msg.jsonDecode(text, .{}, allocator), which is std.json.parseFromSlice under the hood: the library allocates the decoded message in a std.json.Parsed arena (owned by the call, freed by parsed.deinit()); there is no non-arena JSON decode API.",
+   "wire_bytes_match is false for medium (sizes match, messages are equal): the encoder writes fields in generated-struct order, which places the oneof (fields 7-9) after field 15, so the field order differs from the fixture. Maps are kept as ordered entry lists, so map order is preserved.",
+   "The JSON encoder prints float (32-bit) fields with the shortest representation of their f64 widening (e.g. 575.22f -> 575.219970703125), so json_bytes for large is ~18% larger than the reference; the values parse back to identical messages.",
+   "The sibling directories zig/zig-protobuf-arena and zig/zig-protobuf-fba run bench-arena / bench-fba from this same build (same sources, one zig build) with an arena or fixed-buffer allocator reset per iteration instead of individual frees; zig/zig-protobuf-native, -arena-native and -fba-native run the same three strategies compiled for the host CPU instead of the x86-64 baseline (bench-native, bench-arena-native, bench-fba-native).",
+   "Build: the package is pinned by content hash in build.zig.zon and build.sh checks out the pinned commit (or $ZIG_PROTOBUF_REF when set) with git, feeds it to zig fetch as a local directory (Zig's HTTP client cannot use MITM proxies) and only rewrites the url/hash in build.zig.zon, with a warning, when another ref is requested. protoc from $PROTOC is passed via -Dprotoc; zig-protobuf still requests its own protoc 36.2 archive as a lazy dependency, which build.sh seeds into the package cache."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T09:55:51Z",
+  "repeat_index": 1,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}

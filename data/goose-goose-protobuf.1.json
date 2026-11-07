@@ -1,0 +1,450 @@
+{
+ "schema_version": 1,
+ "harness": {
+  "language": "goose",
+  "name": "goose-protobuf",
+  "runtime": "goose runtime 4d3da949e563, goose build -O2, gcc 13.3.0",
+  "library_version": "0.1.0-dev (git a9e99bb)"
+ },
+ "results": [
+  {
+   "dataset": "small",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3068459973,
+   "steady": true,
+   "batch": 131072,
+   "rounds": [
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1008323746
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1007314106
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1007748067
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1009282802
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1008518755
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1009787636
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1013517434
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1008770925
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1010120690
+    },
+    {
+     "iterations": 7471104,
+     "elapsed_ns": 1009096901
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 39,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3042157129,
+   "steady": true,
+   "batch": 32768,
+   "rounds": [
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1002813419
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1001505701
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1002130667
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1002305960
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1001711670
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1001900404
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1002052188
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1001890268
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1001665317
+    },
+    {
+     "iterations": 2555904,
+     "elapsed_ns": 1001132532
+    }
+   ]
+  },
+  {
+   "dataset": "small",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "goose-protobuf has no JSON (ProtoJSON) support"
+  },
+  {
+   "dataset": "small",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "goose-protobuf has no JSON (ProtoJSON) support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3047444308,
+   "steady": true,
+   "batch": 1024,
+   "rounds": [
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1006915088
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1006836571
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1006653309
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1006984352
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1007261341
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1006546149
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1007092778
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1007063422
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1007432624
+    },
+    {
+     "iterations": 89088,
+     "elapsed_ns": 1008315708
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 4833,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3081740424,
+   "steady": true,
+   "batch": 256,
+   "rounds": [
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1011309632
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1010964930
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1010062278
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1009902330
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1010284903
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1011277776
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1011273653
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1012450475
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1012164923
+    },
+    {
+     "iterations": 16128,
+     "elapsed_ns": 1011622039
+    }
+   ]
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "goose-protobuf has no JSON (ProtoJSON) support"
+  },
+  {
+   "dataset": "medium",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "goose-protobuf has no JSON (ProtoJSON) support"
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_encode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3042804818,
+   "steady": true,
+   "batch": 4,
+   "rounds": [
+    {
+     "iterations": 224,
+     "elapsed_ns": 1014431963
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1013769338
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1014163862
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1013604635
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1012544260
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1013663486
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1014710945
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1015455023
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1015281787
+    },
+    {
+     "iterations": 224,
+     "elapsed_ns": 1015805621
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "wire_decode",
+   "supported": true,
+   "payload_bytes": 818938,
+   "validation": {
+    "wire_bytes_match": true,
+    "wire_size_match": true,
+    "json_roundtrip_ok": null,
+    "json_bytes": null
+   },
+   "warmup_ns": 3035180200,
+   "steady": true,
+   "batch": 2,
+   "rounds": [
+    {
+     "iterations": 170,
+     "elapsed_ns": 1000035784
+    },
+    {
+     "iterations": 170,
+     "elapsed_ns": 1000310794
+    },
+    {
+     "iterations": 170,
+     "elapsed_ns": 1001983593
+    },
+    {
+     "iterations": 170,
+     "elapsed_ns": 1001963343
+    },
+    {
+     "iterations": 170,
+     "elapsed_ns": 1000392906
+    },
+    {
+     "iterations": 172,
+     "elapsed_ns": 1011375695
+    },
+    {
+     "iterations": 172,
+     "elapsed_ns": 1011071022
+    },
+    {
+     "iterations": 172,
+     "elapsed_ns": 1010256992
+    },
+    {
+     "iterations": 172,
+     "elapsed_ns": 1009931000
+    },
+    {
+     "iterations": 172,
+     "elapsed_ns": 1011596446
+    }
+   ]
+  },
+  {
+   "dataset": "large",
+   "operation": "json_encode",
+   "supported": false,
+   "reason": "goose-protobuf has no JSON (ProtoJSON) support"
+  },
+  {
+   "dataset": "large",
+   "operation": "json_decode",
+   "supported": false,
+   "reason": "goose-protobuf has no JSON (ProtoJSON) support"
+  }
+ ],
+ "implementation": {
+  "id": "goose/goose-protobuf",
+  "language": "goose",
+  "name": "goose-protobuf",
+  "variant": null,
+  "version": "0.1.0-dev (git a9e99bb)",
+  "url": "https://github.com/Arwalk/goose-protobuf",
+  "notes": [
+   "goose-protobuf 0.1.0-dev at commit a9e99bb (pinned, the project has no release tag yet; override with GOOSE_PROTOBUF_REF) with protoc-gen-goose generated code, Goose v2026.3. The library is pre-1.0 and describes itself as an experiment; it is included by request, not by the popularity criterion of docs/implementations.md.",
+   "Build: goose build at its defaults (no --debug). Goose compiles to C and runs the system C compiler at -O2, generic x86-64, no -march=native; -O2 is the highest level goose build offers, whereas the other C/C++ harnesses compile with -O3. Goose's bounds checks stay on except where its compiler proves them redundant, as in any goose build.",
+   "wire_decode: a new local message, M_decode(bytes, m), then M_clear(m), all inside the timed iteration. Messages and their contents live in global per-type pools: this is the library's only memory model, so M_clear hands storage back to pools that the next iteration reuses, and the rule against object pools cannot be applied to this column.",
+   "wire_encode: a new local u8[>..] per iteration, M_encode(m, out), no pre-sizing with M_size_of. A local growable array lives on Goose's data stack: it grows in place without moving and is released by resetting the stack top, so there is no malloc or free per iteration. That is how the language allocates, not a harness optimisation.",
+   "JSON operations are unsupported: goose-protobuf has no JSON (ProtoJSON) support (binary wire format only).",
+   "wire_bytes_match is true for all three datasets: fields and map entries are written in the fixture's order.",
+   "Build: build.sh checks out the pinned commit with git, builds the plugin from that checkout, generates bench.goose with $PROTOC and vendors the pb_wire runtime with the project's scripts/vendor_runtime.sh; generated code only builds against the runtime of the same commit. Everything stays under build/, including GOOSE_HOME."
+  ]
+ },
+ "environment": {
+  "timestamp": "2026-11-07T08:09:46Z",
+  "hostname": "9b9e5801ffcb",
+  "kernel": "Linux 6.8.0-147-generic",
+  "arch": "x86_64",
+  "os": "Ubuntu 24.04.5 LTS",
+  "cpu_model": "Intel(R) Core(TM) i7-10710U CPU @ 1.10GHz",
+  "cpu_count": 3,
+  "cpu_governor": "performance",
+  "smt_active": "0",
+  "memory_kb": 65550632,
+  "in_docker": true,
+  "image": "proto-benchmarks",
+  "toolchains": {
+   "protoc": "libprotoc 36.2",
+   "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+   "cmake": "cmake version 3.28.3",
+   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+   "go": "go version go1.26.0 linux/amd64",
+   "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+   "mvn": "Apache Maven 3.8.7",
+   "python3": "Python 3.12.3",
+   "dotnet": "8.0.133",
+   "node": "v22.22.1",
+   "swift": "Swift version 6.2.4 (swift-6.2.4-RELEASE)",
+   "zig": "0.17.1",
+   "goose": "goose runtime 4d3da949e563"
+  }
+ },
+ "run": {
+  "timestamp": "2026-11-07T09:18:08Z",
+  "repeat_index": 1,
+  "core": null,
+  "cpuset": "1-3",
+  "warmup_seconds": 3.0,
+  "warmup_max_seconds": 15.0,
+  "steady_probe_seconds": 0.5,
+  "steady_window": 3,
+  "steady_tolerance": 0.05,
+  "round_seconds": 1.0,
+  "rounds": 10
+ }
+}
